@@ -1,0 +1,58 @@
+// Add some whitespace above the footer for medium-up screens
+@media #{$medium-up} {
+    footer.row {
+        margin-top: rem-calc(0);
+    }
+}
+
+footer {
+    margin: rem-calc(30) 0 0 0;
+
+    h5 {
+        font-size: rem-calc(16);
+        margin: 0 0 rem-calc(2) 0;
+        color: inherit;
+        font-weight: $font-weight-bold;
+        font-family: $body-font-family;
+    }
+
+    label {
+        color: inherit;
+    }
+
+    p, li, div {
+        font-size: rem-calc(14);
+    }
+
+    ul {
+        margin-left: 0;
+
+        li {
+            list-style-type: none;
+        }
+    }
+
+    .logo {
+        margin: rem-calc(14) 0 rem-calc(20) 0;
+    }
+
+    input.email {
+        max-width: rem-calc(180);
+        margin-right: rem-calc(10) !important;
+        margin-left: 0 !important;
+        display: inline;
+        border: 0;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+            text-decoration: underline;
+        }
+    }
+        .footer-bar li{float: left; margin-left: rem-calc(15);}
+
+}

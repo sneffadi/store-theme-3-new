@@ -1,0 +1,25 @@
+#ratings label {
+    width: 130px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 5px;
+}
+
+#ratings input[type=number] {
+    width: 70px;
+}
+
+#ratings input[name=ratings-affiliate-link],
+#ratings input[name=meta-image] {}
+
+#ratings textarea {
+    width: auto;
+    height: 100px;
+}
+
+#ratings textarea[name=review-blurb] {
+    width: 80%;
+    min-height: 200px;
+}
+
+#ratings label[for=review-blurb] {}

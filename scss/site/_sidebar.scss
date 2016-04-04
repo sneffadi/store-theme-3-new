@@ -1,0 +1,136 @@
+#sidebar {
+    font-size: $sidebar-font-size;
+
+    .heading {
+        font-size: rem-calc(15);
+        font-weight: $font-weight-bold;
+        text-align: center;
+    }
+
+    .sidebar-top-list {
+        border: 1px solid $gainsboro;
+        background: $vapor;
+        margin: 0 0 rem-calc(20) 0;
+        border-radius: $global-radius;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(10);
+
+        a {
+            color: inherit;
+            text-decoration: inherit;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .heading {
+            margin: 0 0 rem-calc(8) 0;
+        }
+    }
+    .side-top-reviews {
+        border:1px solid #D2D2D2;
+        border-radius: $global-radius;
+        margin: 0 0 rem-calc(20) 0;
+        padding-bottom: rem-calc(10);
+        h2 {
+            font-size: 0.9375rem;
+            text-align:center;
+            background:#E6E6E6;
+            color:#5f5f5f;
+            padding:rem-calc(5) 0;
+        }
+        ul {
+            margin-bottom:0.8rem;
+            margin-left:0;
+            padding:0 rem-calc(15);
+            li {
+                list-style-type:none;
+                font-size:0.9rem;
+                p {
+                    font-size:rem-calc(13);
+                  a {
+                        text-decoration:none;
+                        line-height:1;
+                        color:$body-font-color;
+                        &:hover {
+                            text-decoration:underline;
+                        }
+                    }  
+                }
+                p.reviewtitle {
+                    margin-bottom:rem-calc(0);
+                    font-weight:700;
+                }
+                p.reviewBlurb {
+                    line-height:1.2;
+                }
+                
+                figure {
+                    margin:0;
+                    display:block;
+                    border:1px solid $sidebar-border;
+                    height:rem-calc(56);
+                    width:rem-calc(56);
+                    padding:rem-calc(3);
+                    img {
+                        max-height:100%;
+                        display:block;
+                        margin:0 auto;
+                    }
+                }
+            }
+        }
+        p {
+            font-size:0.9rem;
+            margin-bottom:0.5rem;
+        }
+        p.see-all {
+            border-top:1px dotted $sidebar-border;
+            text-align:right;
+            padding-right:rem-calc(15);
+            padding-top:rem-calc(8);
+            margin-bottom:0;
+        }
+    }
+
+    .sidebar-upsell {
+        border: 1px solid $upsell-border-color;
+        border-radius: $global-radius;
+        background: $upsell-bg;
+        padding-top: rem-calc(10);
+        padding-bottom: rem-calc(12);
+
+        //padding: rem-calc(8) 0 0 0;
+
+        .title {
+            font-size: rem-calc(18);
+            font-weight: $font-weight-bold;
+            text-align: center;
+            margin: 0 0 rem-calc(6) 0;
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+        ul {
+            margin-top:rem-calc(10);
+            li {
+                font-size:rem-calc(13);
+            }
+        }
+
+        .button {
+            width: 100%;
+            margin: 0 0 0 0;
+        }
+
+        .ratings-bar {
+            width: 70%;
+        }
+    }
+}
+#sticky-sticky-wrapper {
+    clear:both;
+}

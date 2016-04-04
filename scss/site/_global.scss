@@ -1,0 +1,76 @@
+h1 {
+	line-height:1.2;
+}
+p {
+	font-size:rem-calc(16);
+}
+figure {
+	margin:0;
+}
+.button {
+	text-decoration:none;
+	border-radius:rem-calc(5);
+}
+.button.tiny {
+	font-weight:700;
+	font-size:rem-calc(14);
+}
+.button.secondary {
+	color:$body-font-color;
+}
+.reviews {
+	.ingredients {
+		margin-left:rem-calc(20);
+		img {
+			margin:rem-calc(15) auto;
+			display:block;
+		}
+		img.right {
+			margin-left:rem-calc(10);
+			margin-bottom:rem-calc(15);
+		}
+	}
+}
+.right {
+	float:right;
+}
+.left {
+	float:left;
+}
+.single-articles {
+	h2 {
+		text-align:left;
+	}
+	img.first {
+		margin-top:rem-calc(20);
+		@media #{$small-only} {
+			width:100%;
+		}
+	}
+	img.left {
+		margin-right:rem-calc(10);
+		margin-bottom:rem-calc(15);
+	}
+	img.right {
+		margin-left:rem-calc(10);
+		margin-bottom:rem-calc(15);
+	}
+}
+.review-end {
+	a.button.success {
+		@media #{$small-only} {
+			width:100%;
+		}
+	}
+}
+.row .row {
+	margin-left:0;
+	margin-right:0;
+}
+.menu .active > a {
+	color:inherit;
+	background:none;
+}
+.pagination li.current a {
+	color:#fff;
+}

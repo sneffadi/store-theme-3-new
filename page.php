@@ -6,39 +6,39 @@
  * Please note that this is the WordPress construct of pages and that
  * other "pages" on your WordPress site will use a different template.
  *
- * @package FoundationPress
- * @since FoundationPress 1.0.0
+ * @package WordPress
+ * @subpackage FoundationPress
+ * @since FoundationPress 1.0
  */
 
- get_header(); ?>
+get_header(); ?>
 
- <?php get_template_part( 'template-parts/featured-image' ); ?>
+<div class="row medium-collapse">
+  <div id="content" class="small-24 columns" role="main">
 
- <div id="page" role="main">
+  <?php do_action( 'before_page_content' ); ?>
 
- <?php do_action( 'foundationpress_before_content' ); ?>
- <?php while ( have_posts() ) : the_post(); ?>
-   <article <?php post_class('main-content') ?> id="post-<?php the_ID(); ?>">
-       <header>
-           <h1 class="entry-title"><?php the_title(); ?></h1>
-       </header>
-       <?php do_action( 'foundationpress_page_before_entry_content' ); ?>
-       <div class="entry-content">
-           <?php the_content(); ?>
-       </div>
-       <footer>
-           <?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ), 'after' => '</p></nav>' ) ); ?>
-           <p><?php the_tags(); ?></p>
-       </footer>
-       <?php do_action( 'foundationpress_page_before_comments' ); ?>
-       <?php comments_template(); ?>
-       <?php do_action( 'foundationpress_page_after_comments' ); ?>
-   </article>
- <?php endwhile;?>
+  <?php while ( have_posts() ) : the_post(); ?>
+    
+        <article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
- <?php do_action( 'foundationpress_after_content' ); ?>
- <?php get_sidebar(); ?>
+    <?php if ( is_front_page() ) {  
+      do_action( 'homepage_banner' );
+    }
+      ?>      
 
- </div>
+            <?php do_action( 'page_before_entry_content' ); ?>      
 
- <?php get_footer();
+      <?php the_content(); ?>
+
+            <?php do_action( 'page_after_entry_content'); ?>
+
+
+    </article>
+  
+    <?php endwhile;?>
+
+  <?php do_action( 'after_page_content' ); ?>
+  </div><!--/.columns-->
+</div><!--/.row-->
+<?php get_footer(); ?>

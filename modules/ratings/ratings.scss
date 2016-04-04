@@ -1,0 +1,159 @@
+// Start Rating
+.product-image {
+    figure {
+        padding: rem-calc(5) 0 0 0;
+        text-align: center;
+
+        img {
+            max-height: rem-calc(215);
+            width: auto;
+        }
+    }
+}
+
+.star-positioner {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+
+    @include clearfix;
+
+    .stars {
+        background: $gainsboro;
+        display: inline-block;
+
+        //visibility: hidden;
+
+        .colorbar {
+            background: $rating-bg-color;
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .star_holder {
+            position: relative;
+            z-index: 1;
+
+            .star {
+                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA9CAYAAAAeYmHpAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAADHUlEQVRo3uWb73naMBDG3+vTAdwN6ARxJyidoGQDugEjpBOQTIAzQbIBZIKYCaATwAZvP1gGPwTQP+sE4f1iEtvS/XQnnXUYIUncmL7kNuCWoLcA7m8N+klEXgGsbwm6Mse/twJdicjafH5FE+qfHvq5/SAiWwBP2gaIcsqqReRH9x8kBwBWmtDanv7gVRPqlaYRmp7eisi3YydIDgHMtaA1PX1y7orIAkD9GaEry3m1BU0rvCsR+WO7iOQGQJHaGC1PPztep+JtDU8vROSXy4Va6UvD065eVktfqT29FpHvPjdopK/Unnb2ciuTvhbXDP0YeJ/3YF0KdGU2FN4SkQoJ99opoWPTTzJvf+2pnS32j5E1gH8iUge21erRHO+wf2AZ9mGsbfVedKCWHagtsFt01EWyAFCaP8vOoPw0x+75o9AvAN7Q8VToXLxEkewOyhDAb5DckBzlNk5pAKYkCe41zm1UYuBZC9qFJslpbuMSwBYk37uQh9AkOcttaI/Ag0PgU9AkOTcr5NWKZGnWK7pC04zQVYKTHJ4CtkHT3FjmhvAEHluYrNBXBU7ywYHHCbrVODeUBXjmCuIDTZKT3HBHYAuSLz4QvtDkBaU0HsnBqaBpRrbIDFySXIUYHwpNZkxpPJODU0O34KUysDUl2RRbOSmh8I3Ege5iG+ijXFQrQy9jG4iFzlFwWGSHVgZuvwVZ54R+04Y2qnNCR3UeoajBjoHe9lDmDVVUvzHQuYCjS88x0Lnmc6tg8Bjo4E57Uq0OHRpibHZGD2w2C6MI6PBIC33mDuxrxI87ozmb1y582xqEPnuHQnvVx42Bc1ub9Ny1MXBrGRreTs+/NKGM5uWZoeXyCYAV/cpSdZD1gZ4eOLQ7Zvied06HLSvJSUjjIdAbiyEl7aHsqinPhDyb+rYK9MsJAwpjZN/a8ExBMqTBkDm9PNLxGM28nfg25qACwJRNlWZ45PzCt8EQ6F0nJrzeAcyQvoJSApizqW93+/LP197zAbtQniUIZe+QZ5P7k4Z3bTpbARgn9uw5FWhCPug9Uu3fcFyEbvJnh/8BLKkYWB0pa80AAAAASUVORK5CYII=\a");
+                background-size: contain;
+                display: inline-block;
+                float: left;
+                vertical-align: baseline;
+                background-repeat: no-repeat;
+                margin: 0;
+                padding: 0;
+                width: rem-calc(18);
+                height: rem-calc(18);
+
+                @media #{$small-only} {
+                    height: rem-calc(16);
+                    width: rem-calc(16);
+                }
+            }
+        }
+    }
+}
+
+.top-product {
+    font-size: $rating-font-size;
+    margin: 0 0 rem-calc(20) 0;
+
+    .upsell-title {
+        font-size: rem-calc(24);
+        margin: 0 0 rem-calc(10) 0;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        span {
+            font-weight: $font-weight-normal;
+        }
+    }
+
+    .star-col {
+        padding: 0;
+        text-align: center;
+    }
+
+    .criterion {
+        padding: 0;
+        font-weight: $font-weight-bold;
+        font-weight: $font-weight-semibold;
+    }
+
+    .table {
+        background: $white;
+        border: 1px solid $gainsboro;
+        margin: 0 0 rem-calc(8) 0;
+        padding: rem-calc(5) rem-calc(7) !important;
+        border-radius: $global-radius;
+    }
+
+    .out-of {
+        padding: 0;
+        text-align: right;
+    }
+
+    .criterion-row {
+        vertical-align: middle;
+        float: left !important;
+        width: 100%;
+        padding: 0;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    .product-details {
+        padding: 0 0 0 rem-calc(10);
+
+        div {
+            margin: 0 0 rem-calc(2) 0;
+        }
+
+        .retail {
+            span {
+                font-weight: $font-weight-semibold;
+            }
+        }
+
+        .lowest-price {
+            span {
+                font-weight: $font-weight-semibold;
+            }
+        }
+
+        .guarantee {
+            span {
+                font-weight: $font-weight-semibold;
+            }
+        }
+
+        .lowest-price-link {
+            font-weight: $font-weight-semibold;
+        }
+    }
+
+    .button.success {
+        margin: 0 0 0 rem-calc(7.5);
+        width: 100%;
+    }
+
+    .button.secondary {
+        margin: 0 rem-calc(7.5) 0 0;
+        width: 100%;
+    }
+
+    .button.success.review-button {
+        margin: 0;
+        width: 100%;
+        padding: rem-calc(7) 0;
+    }
+}

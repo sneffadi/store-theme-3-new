@@ -1,0 +1,295 @@
+#buytable {
+    text-align: center;
+    font-weight: $font-weight-bold;
+    margin: 0 0 rem-calc(20) 0;
+	h2{
+		margin-bottom: rem-calc(25);
+	}
+    .buy-top-img {
+        width: 97%;
+        margin-bottom: rem-calc(18);
+    }
+
+    option {
+        font-size: rem-calc(16);
+    }
+
+    .buy-wrap {
+        padding-top: rem-calc(12);
+        border: 1px solid $white-smoke;
+        border-radius: 0 0 rem-calc(3) rem-calc(3);
+        margin-bottom: rem-calc(20);
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: rem-calc(24);
+        text-align: center;
+        background: $iron;
+        color: $white;
+        padding: rem-calc(4) 0;
+        border-radius: rem-calc(3) rem-calc(3) 0 0;
+    }
+
+    .even {
+        background-color: $primary-color;
+    }
+
+    .quantity {
+        font-size: rem-calc(24);
+        line-height: 1;
+        margin: rem-calc(10) 0 rem-calc(6) 0;
+    }
+
+    .description {
+        font-size: rem-calc(16);
+        font-weight: $font-weight-normal;
+        line-height: 1;
+        margin: 0 0 rem-calc(6) 0;
+    }
+
+    .add-to-cart {
+        width: 100%;
+        font-size: rem-calc(24);
+        padding: rem-calc(6);
+        text-transform: uppercase;
+        border-radius: rem-calc(2);
+        font-weight: $font-weight-bold;
+        margin: 0 0 rem-calc(14) 0;
+    }
+
+    .out-of-stock {
+        width: 100%;
+        font-size: rem-calc(18);
+    }
+
+    .savings {
+        margin: 0 0 em-calc(12) 0;
+        color: $success-color;
+
+        span:nth-child(2) {
+            margin: 0 rem-calc(5) 0 0;
+        }
+
+        span:nth-child(3) {
+            margin: 0 0 0 rem-calc(5);
+        }
+    }
+
+    .retail {
+        font-size: rem-calc(18);
+        color: $jumbo;
+        margin: 0 0 rem-calc(4) 0;
+    }
+
+    .price {
+        font-size: rem-calc(32);
+        line-height: 1;
+        text-transform: uppercase;
+        font-family: $font-family-sans-serif-heading;
+    }
+
+    .shipping {
+        padding: rem-calc(5) 0;
+        border-top: rem-calc(2) solid $white-smoke;
+        border-bottom: rem-calc(2) solid $white-smoke;
+        margin: 0 0 rem-calc(12) 0;
+    }
+
+    .buy-image {
+        margin: 0;
+        vertical-align: middle;
+        padding: rem-calc(20) 0;
+        height:rem-calc(220);
+        box-sizing: border-box;
+
+        img {
+            max-height: rem-calc(180);
+        }
+    }
+
+    .payment {
+        font-size: rem-calc(30);
+        color: $charcoal;
+
+        i {
+            margin: 0 0 0 rem-calc(6);
+        }
+    }
+
+    .four-columns {
+        .buy-image {
+            padding: 0 10px;
+        }
+
+        .quantity {
+            margin-bottom: 15px;
+            font-size: rem-calc(22);
+        }
+
+        .savings {
+            font-size: rem-calc(14);
+        }
+
+        .button.add-to-cart {
+            font-size: rem-calc(18);
+        }
+    }
+}
+
+// small inkly
+#buytable {
+    .buy-small {
+        border-bottom: 1px solid #E7E7E7;
+        padding: 0 0 15px 0;
+        margin: 0 0 15px 0;
+
+        .bottle-images {
+            padding: 5px 15px;
+        }
+
+        .product-info {
+            padding: 0 15px;
+        }
+
+        .supply {
+            padding: 0;
+            font-weight: $font-weight-normal;
+        }
+
+        .bonus-item {
+            margin: 0;
+            font-size: rem-calc(14);
+            font-weight: $font-weight-bold;
+        }
+
+        .savings {
+            font-size: rem-calc(14);
+            margin: 0;
+        }
+
+        .retail {
+            font-size: rem-calc(14);
+            margin: 0;
+            font-weight: $font-weight-normal;
+            text-decoration: line-through;
+        }
+
+        .price {
+            font-size: rem-calc(45);
+        }
+
+        .shipping {
+            font-size: rem-calc(14);
+            margin: 0 0 12px 0;
+            padding: 0;
+            border-top: none;
+            border-bottom: none;
+            font-weight: $font-weight-normal;
+        }
+    }
+}
+
+/* Dropdown in banner */
+.dropdown {
+    font-family: $font-family-sans-serif-heading;
+    background-color: #f5f5f5;
+    border: 2px solid #eee;
+    height: 45px;
+    position: relative;
+    overflow: hidden;
+    zoom: 1;
+    line-height: 1 !important;
+    display: block;
+    border-radius: 5px;
+    transition: all .15s linear;
+    margin: 20px auto 10px auto;
+    cursor: pointer;
+    font-size: rem-calc(16);
+
+    span {
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 45px;
+        line-height: 45px;
+        cursor: pointer;
+        padding: 0 30px 0 16px;
+        overflow: visible;
+        font-weight: $font-weight-semibold;
+        text-align: left;
+        text-transform: uppercase;
+        background: rgba(0, 0, 0, 0.01);
+        color: #555;
+    }
+
+    select {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+        border: none;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        padding-right: 10px;
+        display: inline-block;
+        transition: all 1s;
+        line-height: 100%;
+        font-size: rem-calc(16);
+    }
+
+    &:after {
+        font-family: FontAwesome;
+        content: "\f107";
+        position: absolute;
+        right: 13px;
+        top: 15px;
+        bottom: 3px;
+        width: 10px;
+        text-align: center;
+        color: $oil;
+    }
+}
+
+.dropdown-buy {
+    margin-bottom: rem-calc(30) !important;
+    background: none;
+
+    .add-to-cart {
+        width: 100%;
+        font-size: rem-calc(20);
+        margin: 0;
+    }
+
+    .dd-buy {
+        width: 90%;
+        margin: 10px 5% 0 0;
+        text-align: left;
+    }
+
+    .dd-retail {
+        text-decoration: line-through;
+        font-size: rem-calc(30);
+        color: $monsoon;
+    }
+
+    .dd-our-price {
+        font-weight: $font-weight-bold;
+        font-size: rem-calc(30);
+    }
+    .dd-retail, .dd-our-price {
+        padding-left:rem-calc(5)
+    }
+
+    .dd-savings {
+        display: inline-block;
+        color: red;
+        font-size:rem-calc(20);
+    }
+
+    .dd-bonus {
+        font-size:rem-calc(20);
+    }
+}

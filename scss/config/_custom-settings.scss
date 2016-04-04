@@ -1,0 +1,212 @@
+/* 
+    My custom settings. These variables are copied from _settings.css
+    This file will only contain uncommented settings that are actually used in the theme.
+*/
+
+// Set site width
+$grid-row-width: rem-calc(800);
+$column-gutter: rem-calc(30);
+$imgPath: "/wp-content/uploads";
+//$imgPath: "http://localhost/topmaleenhancements.com/wp-content/uploads";
+$grid-column-count: 24;
+
+// Typography
+$font-family-sans-serif: "pt-sans", Helvetica, Arial, sans-serif;
+$font-family-sans-serif-heading: "myriad-pro-semi-condensed", Helvetica, Arial, sans-serif;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+$body-font-family: $font-family-sans-serif;
+$header-font-family: $font-family-sans-serif-heading;
+
+$header-sizes: (
+  small: (
+    'h1': 30,
+    'h2': 27,
+    'h3': 24,
+    'h4': 21,
+    'h5': 18,
+    'h6': 16,
+  )
+);
+
+$h1-font-size: rem-calc(48);
+$h2-font-size: rem-calc(36);
+$h3-font-size: rem-calc(24);
+$h4-font-size: rem-calc(21);
+$h5-font-size: rem-calc(18);
+$h6-font-size: 1rem;
+
+$font-weight-normal: normal !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: bold !default;
+$font-weight-x-bold: 800 !default;
+
+$header-line-height: 1.1;
+$subheader-line-height: 1.2;
+$paragraph-line-height: 1.45;
+
+// Foundation color naming conventions
+$white: #FFFFFF;
+$ghost: #FAFAFA;
+$vapor: #F6F6F6;
+$white-smoke: #F5F5F5;
+$silver: #EFEFEF;
+$smoke: #EEEEEE;
+$gainsboro: #DDDDDD;
+$iron: #CCCCCC;
+$base: #AAAAAA;
+$aluminum: #999999;
+$jumbo: #888888;
+$monsoon: #777777;
+$steel: #666666;
+$charcoal: #555555;
+$tuatara: #444444;
+$oil: #333333;
+$jet: #444;
+$black: #000000;
+$viking: #ca3fd0;
+$cerulean: #0ab1c5;
+$gray: #F9F9F9;
+$curious-blue: #2597CC;
+$mercury: #e7e7e7;
+$link-water: #DBECF4;
+$transparent: rgba(0, 0, 0, 0);
+$yellow-green: #B9E679;
+$conifer: #9CD846;
+$atlantis: #91D33B;
+$sushi: #8DD137;
+$minty: #28937e;
+$orangy: #f68a32;
+$razzmatazz: #D70D59;
+$malachite: #0EDA73;
+$hibiscus: #C33374;
+$red: #C7003B;
+$guardsman-red: #CC0000;
+$astronaut-blue: #033960;
+
+/*=============================================
+=     Background Color and Font Color       =
+=============================================*/
+
+$body-bg: $white;
+$body-font-color: $jet;
+$anchor-color: $cerulean; //link color
+$foundation-palette: (
+  primary: $astronaut-blue, //color for a lot of elements
+  secondary: $mercury, //color of read review button
+  success: #88B609, //color of buttons
+  warning: #ffae00,
+  alert: #ec5840,
+);
+@include add-foundation-colors;
+$guarantee-banner: $ghost; //background color of guarantee
+$guarantee-bg: $guarantee-banner;
+$guarantee-text: inherit;
+$upsell-bg: $link-water; //sidebar upsell bg;
+$upsell-border-color: $curious-blue; //sidebar upsell border color;
+$topbar-background: $white; // desktop nav bg
+$topbar-color: $white;
+$topbar-dropdown-bg: $white;
+$topbar-border-bottom: rem-calc(5px) solid $primary-color;
+$topbar-bg-hover: scale-color($topbar-background, $lightness: -10%);
+$titlebar-background: $white; // small/medium nav bg
+$titlebar-icon-color: $aluminum; //hamburger color
+$titlebar-left-section-border: solid 1px scale-color($titlebar-background, $lightness: -10%);
+$sidebar-border: $iron; //color of border of sidebar boxes and upsell table
+
+$off-canvas-bg: $white-smoke; //mobile slide out nav bg color
+$off-canvas-bg-hover: scale-color($titlebar-background, $lightness: -10%);
+$off-canvas-bg-active: scale-color($titlebar-background, $lightness: -10%);
+$off-canvas-link-color: $monsoon;
+$off-canvas-link-border-bottom: 1px solid scale-color($off-canvas-bg, $lightness: -10%);
+$off-canvas-overlay-box-shadow: -4px 0 4px rgba($black, 0.2), 4px 0 4px rgba($black, 0.2);
+
+$logo-height: rem-calc(53);
+$logo-width: rem-calc(430);
+$logo-max-width: none;
+$logo-section-height: auto;
+$logo-section-padding: rem-calc(15) 0;
+
+$rating-bg-color: $guardsman-red; //backgorund of rating bar
+$rating-border-color: $aluminum; //border of rating bar
+
+$topbar-dropdown-link-bg: $charcoal;
+$topbar-link-color: $white;
+$topbar-link-color-hover: $white;
+$topbar-link-color-active: $white;
+$topbar-link-color-active-hover: $white;
+
+
+
+/*=====  Background Color and Font Color   ======*/
+
+// We use these to control various global styles
+$body-font-family: $font-family-sans-serif;
+$body-font-weight: $font-weight-normal;
+$header-font-family: $font-family-sans-serif-heading;
+$body-font-style: normal;
+$header-font-weight: $font-weight-bold;
+$header-text-rendering: optimizeLegibility;
+$anchor-text-decoration: underline;
+$anchor-text-decoration-hover: underline;
+
+//Topbar
+//Topbar
+$topbar-height: rem-calc(40); //height of header
+$topbar-title-weight: $font-weight-normal;
+$topbar-title-font-size: rem-calc(16);
+$topbar-link-weight: $font-weight-normal;
+$topbar-link-font-size: rem-calc(14);
+$topbar-margin-top: rem-calc(6); // vertically center the logo
+$topbar-margin-left: $column-gutter / 2; // align left side of logo with content
+$titlebar-height: rem-calc(45);
+$tabbar-margin-top: rem-calc(0); // vertically center logo
+
+$tip-top-bg-color: $oil;
+$tip-top-color: $white;
+$tip-top-height: rem-calc(32);
+$tip-top-font-size: rem-calc(14);
+$tip-top-link-color: inherit;
+
+// We use these to build padding for buttons
+$button-tny: rem-calc(8.5);
+$button-sml: rem-calc(10.5);
+$button-med: rem-calc(10.5);
+$button-lrg: rem-calc(18);
+
+// We use these to control button text styles.
+$button-font-tny: rem-calc(14);
+$button-font-sml: rem-calc(16);
+$button-font-med: rem-calc(16);
+$button-font-lrg: rem-calc(20);
+$button-font-weight: $font-weight-normal;
+$button-font-align: center;
+
+//Ratings
+$rating-font-size: rem-calc(13);
+$inline-list-bottom-margin: rem-calc(0);
+
+//sidebar
+$sidebar-text-margin: 0 0 rem-calc(8) 0;
+$sidebar-font-size: rem-calc(14);
+
+// Media query breakpoints
+$small-breakpoint: em-calc(640);
+$medium-breakpoint: em-calc(1024);
+$topbar-breakpoint: em-calc(820);
+$large-breakpoint: em-calc(1440);
+$xlarge-breakpoint: em-calc(1920);
+
+.small-column, .small-columns {
+    position: relative;
+    padding-left: $column-gutter / 6;
+    padding-right: $column-gutter / 6;
+    float: left;
+}
+
+.medium-column, .medium-columns {
+    position: relative;
+    padding-left: $column-gutter / 4;
+    padding-right: $column-gutter / 4;
+    float: left;
+}

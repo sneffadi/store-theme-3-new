@@ -1,0 +1,19 @@
+.custom-product-banner {
+	.tabs {
+		border:none;
+	}
+	.tabs-content {
+		border:none;
+	}
+	.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+		background:#39B8EE;
+		color:$white;
+	}
+	.tabs-title > a {
+		text-decoration:none;
+		font-weight:bold;
+		color:#444; 
+		font-size:rem-calc(16);
+		background:#EFEFEF;
+	}
+}

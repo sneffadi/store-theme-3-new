@@ -58,7 +58,7 @@ var PATHS = {
     'assets/components/motion-ui/motion-ui.js',
 
     // Include your own custom scripts (located in the custom folder)
-    'assets/javascript/custom/*.js',
+    'js/custom/*.js',
   ],
   phpcs: [
     '**/*.php',
@@ -103,7 +103,7 @@ gulp.task('sass', function() {
   // Minify CSS if run wtih --production flag
   var minifycss = $.if(isProduction, $.minifyCss());
 
-  return gulp.src('assets/scss/foundation.scss')
+  return gulp.src('scss/foundation.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.sass
@@ -123,7 +123,7 @@ gulp.task('sass', function() {
 
 // Lint all JS files in custom directory
 gulp.task('lint', function() {
-  return gulp.src('assets/javascript/custom/*.js')
+  return gulp.src('js/custom/*.js')
     .pipe($.jshint())
     .pipe($.notify(function (file) {
       if (file.jshint.success) {
@@ -156,7 +156,7 @@ gulp.task('javascript', function() {
     }))
     .pipe($.if(isProduction, uglify))
     .pipe($.if(!isProduction, $.sourcemaps.write()))
-    .pipe(gulp.dest('assets/javascript'))
+    .pipe(gulp.dest('js'))
     .pipe(browserSync.stream());
 });
 
@@ -165,12 +165,12 @@ gulp.task('copy', function() {
   // Motion UI
   var motionUi = gulp.src('assets/components/motion-ui/**/*.*')
     .pipe($.flatten())
-    .pipe(gulp.dest('assets/javascript/vendor/motion-ui'));
+    .pipe(gulp.dest('js/vendor/motion-ui'));
 
   // What Input
   var whatInput = gulp.src('assets/components/what-input/**/*.*')
       .pipe($.flatten())
-      .pipe(gulp.dest('assets/javascript/vendor/what-input'));
+      .pipe(gulp.dest('js/vendor/what-input'));
 
   // Font Awesome
   var fontAwesome = gulp.src('assets/components/fontawesome/fonts/**/*.*')
@@ -231,7 +231,7 @@ gulp.task('clean', function(done) {
 // Clean JS
 gulp.task('clean:javascript', function() {
   return del([
-      'assets/javascript/foundation.js'
+      'js/foundation.js'
     ]);
 });
 
@@ -253,13 +253,13 @@ gulp.task('default', ['build', 'browser-sync'], function() {
   }
 
   // Sass Watch
-  gulp.watch(['assets/scss/**/*.scss'], ['clean:css', 'sass'])
+  gulp.watch(['scss/**/*.scss', 'modules/**/*.scss'], ['clean:css', 'sass'])
     .on('change', function(event) {
       logFileChange(event);
     });
 
   // JS Watch
-  gulp.watch(['assets/javascript/custom/**/*.js'], ['clean:javascript', 'javascript', 'lint'])
+  gulp.watch(['js/custom/**/*.js'], ['clean:javascript', 'javascript', 'lint'])
     .on('change', function(event) {
       logFileChange(event);
     });
