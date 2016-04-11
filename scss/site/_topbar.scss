@@ -80,6 +80,9 @@
 
     img {
       margin-top:rem-calc(9);
+      @media #{$small-only} {
+        width:rem-calc(270);
+      }
     }
   }
 }
