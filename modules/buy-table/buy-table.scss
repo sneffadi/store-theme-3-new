@@ -271,13 +271,13 @@
 
     .dd-retail {
         text-decoration: line-through;
-        font-size: rem-calc(30);
+        font-size: rem-calc(28);
         color: $monsoon;
     }
 
     .dd-our-price {
         font-weight: $font-weight-bold;
-        font-size: rem-calc(30);
+        font-size: rem-calc(28);
     }
     .dd-retail, .dd-our-price {
         padding-left:rem-calc(5)
@@ -286,10 +286,10 @@
     .dd-savings {
         display: inline-block;
         color: red;
-        font-size:rem-calc(20);
+        font-size:rem-calc(18);
     }
 
     .dd-bonus {
-        font-size:rem-calc(20);
+        font-size:rem-calc(18);
     }
 }
