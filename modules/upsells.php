@@ -246,18 +246,18 @@ function top_products_cb() {
             if($showCustom) $value= get_post_meta($id, "cf_retail_price", true);
             else $value= get_post_meta($id, "retail_c1", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-10 columns criterion">
                                     MSRP:
                                 </div>
-                                <div class="small-10 medium-15 columns">
+                                <div class="small-10 medium-14 columns">
                                     <?php echo "$".number_format($value, 2); ?>
                                 </div>
                             </div>
                             <div class="criterion-row row">
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-10 columns criterion">
                                     Our Price:
                                 </div>
-                                <div class="small-10 medium-15 columns">
+                                <div class="small-10 medium-14 columns">
             <?php if($showCustom) $price= get_post_meta($id, "cf_store_price_one", true);
             else {
                 $pricing = array();
@@ -291,10 +291,10 @@ function top_products_cb() {
                                 </div>
                             </div>
                             <div class="criterion-row row">
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-10 columns criterion">
                                     Guarantee:
                                 </div>
-                                <div class="small-10 medium-15 columns">
+                                <div class="small-10 medium-14 columns">
                                     <?php echo get_post_meta($id, "ratings-guarantee", true); ?>
                                 </div>
                             </div><!-- / .criterion-row -->
@@ -302,10 +302,10 @@ function top_products_cb() {
                                 $officialSite = get_post_meta( $id, "ratings-official-site", true );
                                 if ($officialSite !== "") { ?>
                             <div class="criterion-row row">
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-10 columns criterion">
                                     Official Site:
                                 </div>
-                                <div class="small-10 medium-15 columns">
+                                <div class="small-10 medium-14 columns">
                                    <a href="http://www.<?php echo strtolower($officialSite); ?>/"><?php echo ucfirst($officialSite); ?></a>
                                 </div>
                             </div><!-- / .criterion-row -->
