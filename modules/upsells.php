@@ -62,7 +62,7 @@ function top_products_cb() {
                     <div class="row collapse">
                         <div class="small-24 columns table">
                             <div class="criterion-row row">
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Overall Value:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-overall-value', TRUE);
@@ -71,7 +71,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -92,7 +92,7 @@ function top_products_cb() {
                             <div class="criterion-row row">
             <?php $value= get_post_meta($id, "ratings-effectiveness", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Effectiveness:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-effectiveness', TRUE);
@@ -101,7 +101,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -123,7 +123,7 @@ function top_products_cb() {
                             <div class="criterion-row row">
             <?php $value= get_post_meta($id, "ratings-speed-of-results", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Speed of Results:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-speed-of-results', TRUE);
@@ -132,7 +132,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -153,7 +153,7 @@ function top_products_cb() {
                             <div class="criterion-row row">
             <?php $value= get_post_meta($id, "ratings-product-safety", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Product Safety:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-product-safety', TRUE);
@@ -162,7 +162,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -183,7 +183,7 @@ function top_products_cb() {
                             <div class="criterion-row row">
             <?php $value= get_post_meta($id, "ratings-ingredient-quality", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Ingredients:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-ingredient-quality', TRUE);
@@ -192,7 +192,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -213,7 +213,7 @@ function top_products_cb() {
                             <div class="criterion-row row">
             <?php $value= get_post_meta($id, "ratings-long-term-results", true);
             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                <div class="small-14 medium-9 columns criterion">
+                                <div class="small-14 medium-11 columns criterion">
                                     Long-Term Results:
                                 </div>
                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-long-term-results', TRUE);
@@ -222,7 +222,7 @@ function top_products_cb() {
                                     if($thisRating==='') $thisRating= 0;
                                 }
                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                <div class="medium-11 small-10 columns star-col">
+                                <div class="medium-9 small-10 columns star-col">
                                     <div class="star-positioner">
                                         <div class="stars">
                                             <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
