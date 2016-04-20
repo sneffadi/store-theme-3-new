@@ -15,5 +15,8 @@
 		color:#444; 
 		font-size:rem-calc(16);
 		background:#EFEFEF;
+		@media #{$small-only} {
+            padding:rem-calc(20);
+        }
 	}
 }

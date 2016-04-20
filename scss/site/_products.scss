@@ -233,7 +233,10 @@
     }
 
     .productMeta {
-        padding-left: 3rem;
+        @media #{$medium-up} {
+          padding-left: 3rem;  
+        }
+        
 
         h1 {
             font-size: 1rem;
