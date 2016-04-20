@@ -29,6 +29,10 @@ function product_banner_callback($post) {
     #banner_meta input[type="text"] {
         width: 75%;
     }
+    #banner_meta .custom-product-tabs textarea {
+        width:80%;
+        min-height:200px;
+    }
 </style>
 <section id="banner_meta">
     <?php $checked= isset($cf_value['cf_custom_banner']) ? checked($cf_value['cf_custom_banner'][0], 'yes', FALSE) : '';
@@ -93,6 +97,23 @@ function product_banner_callback($post) {
             <input type="text" name="cf_prod_bullet_point_<?php echo $i;?>" value="<?php echo $bannerImg;?>"/>
         </p>
     <?php endfor; ?>
+        <?php $checked= isset($cf_value['cf_custom_tabs']) ? checked($cf_value['cf_custom_tabs'][0], 'yes', FALSE) : '';
+        $showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes'); ?>
+        <label><input type="checkbox" name="cf_custom_tabs" <?php echo $checked;?> class="toggle-div" data-toggle-div="custom-product-tabs" /> Add Tabs</label>
+        <div class="custom-product-tabs" <?php echo $showCustom ? '' : 'style="display:none;"';?>>
+            <p>
+                <label for="description-tab">Description Tab (include p tags)</label>
+                <textarea type="text" name="description-tab"><?php if ( isset ( $cf_value['description-tab'] ) ) echo $cf_value['description-tab'][0]; ?></textarea>
+            </p>
+            <p>
+                <label for="suppfacts-tab">Supplement Facts Tab (include p tags)</label>
+                <textarea type="text" name="suppfacts-tab"><?php if ( isset ( $cf_value['suppfacts-tab'] ) ) echo $cf_value['suppfacts-tab'][0]; ?></textarea>
+            </p>
+            <p>
+                <label for="faq-tab">FAQ Tab (include p tags)</label>
+                <textarea type="text" name="faq-tab"><?php if ( isset ( $cf_value['faq-tab'] ) ) echo $cf_value['faq-tab'][0]; ?></textarea>
+            </p>
+        </div>
     </div>
 </section><!--/banner_meta -->
 <script>
@@ -165,6 +186,18 @@ if((isset($_POST['cf_item_id_three']))&&($_POST['cf_item_id_three']!='')) {
             update_post_meta($post->ID, 'cf_prod_bullet_point_'.$i, esc_attr($_POST['cf_prod_bullet_point_'.$i]));
         } else delete_post_meta($post->ID, 'cf_prod_bullet_point_'.$i);
     }
+    if((isset($_POST['cf_custom_tabs']))&&($_POST['cf_custom_tabs']!='')) {
+        update_post_meta($post->ID, 'cf_custom_tabs', 'yes');
+    } else delete_post_meta($post->ID, 'cf_custom_tabs');
+    if((isset($_POST['description-tab']))&&($_POST['description-tab']!='')) {
+        update_post_meta($post->ID, 'description-tab', $_POST['description-tab']);
+    } else delete_post_meta($post->ID, 'description-tab');
+    if((isset($_POST['suppfacts-tab']))&&($_POST['suppfacts-tab']!='')) {
+        update_post_meta($post->ID, 'suppfacts-tab', $_POST['suppfacts-tab']);
+    } else delete_post_meta($post->ID, 'suppfacts-tab');
+    if((isset($_POST['faq-tab']))&&($_POST['faq-tab']!='')) {
+        update_post_meta($post->ID, 'faq-tab', $_POST['faq-tab']);
+    } else delete_post_meta($post->ID, 'faq-tab');;
 }
 add_action('save_post', 'product_banner_save');
 
@@ -282,6 +315,51 @@ function render_custom_product_banner() {
         </form>
     </div><!--end div.columns-->
 </div><!--end div.custom-product-banner-->
+<?php
+    $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon';
+    $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon';
+    $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon';
+    if ($showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes')) { ?>
+        <div class="row tabs-section">
+            <div class="small-24 column">
+                <div class="border-wrap">
+                    <div class="row">
+                        <div class="small-24 columns">
+                            <ul class="tabs" data-tabs id="custom-tabs">
+                              <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
+                              <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title"><a href="#suppfacts-panel">Supplement Facts</a></li> <?php } ?>
+                              <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title"><a href="#faq-panel">FAQ</a></li> <?php } ?>
+                            </ul>
+                        </div> <!-- / .small-24 columns -->                
+                    </div> <!-- / .row --> 
+                </div>
+                <div class="tabs-content" data-tabs-content="custom-tabs">
+                    <div class="content is-active tabs-panel" id="description-panel">
+                        <div class="row">
+                            <div class="small-24 columns">
+                                <?php echo do_shortcode($description); ?> 
+                            </div> <!-- / .small-24 columns -->
+                        </div> <!-- / .row -->  
+                    </div>
+                    <div class="content tabs-panel" id="suppfacts-panel">
+                        <div class="row">
+                            <div class="small-24 columns">
+                                <?php echo do_shortcode($suppfacts); ?> 
+                            </div> <!-- / .small-24 columns -->
+                        </div> <!-- / .row -->
+                    </div>
+                    <div class="content tabs-panel" id="faq-panel">
+                        <div class="row">
+                            <div class="small-24 columns">
+                                <?php echo do_shortcode($faq); ?> 
+                            </div> <!-- / .small-24 columns -->
+                        </div> <!-- / .row -->
+                    </div>
+                </div>
+            </div> <!-- / .small-24 column -->
+        </div> <!-- / .row tabs -->
+        
+    <?php } ?>
     <?php endif;
 }
 add_action('before_review_content', 'render_custom_product_banner', 10);
