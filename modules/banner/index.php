@@ -267,8 +267,8 @@ function render_custom_product_banner() {
             <div class="hBorders qtyBox">
                 <ul class="tabs" data-tabs id="buy-tabs">
                     <li class="tabs-title is-active" role="presentation"><a href="#panel1" aria-selected="true">1 Bottle</a></li>
-                    <li class="tabs-title"><a href="#panel2">2 Bottles</a></li>
-                    <li class="tabs-title"><a href="#panel3">3 Bottles</a></li>
+                    <?php if((isset($cf_value['cf_item_id_two']))&&($cf_value['cf_item_id_two']!='')) { ?><li class="tabs-title"><a href="#panel2">2 Bottles</a></li><?php } ?>
+                    <?php if((isset($cf_value['cf_item_id_three']))&&($cf_value['cf_item_id_three']!='')) { ?><li class="tabs-title"><a href="#panel3">3 Bottles</a></li><?php } ?>
                 </ul>
                 <div class="tabs-content" data-tabs-content="buy-tabs">
                     <section class="tabs-panel is-active" id="panel1">
