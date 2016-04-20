@@ -235,12 +235,12 @@ function render_custom_product_banner() {
             <img src="<?php echo custom_get_uploadurl().$customImg;?>" class="custom-image" />
         <?php if((isset($cf_value['cf_cb_show_guar']))&&($cf_value['cf_cb_show_guar'][0]==='yes')):
             ?>
-        <img src="<?php echo custom_get_themeurl().'img/guarantee-seal.png'?>" class="guarantee-seal" alt="Money Back Guarantee" title="Money Back Guarantee" />
+        <img src="<?php echo do_shortcode('[upload_dir]').'guarantee-seal.png'?>" class="guarantee-seal" alt="Money Back Guarantee" title="Money Back Guarantee" />
         <?php endif; ?>
         </div>
         <?php if((isset($cf_value['cf_cb_free_ship']))&&($cf_value['cf_cb_free_ship'][0]==='yes')):
             ?>
-        <img src="<?php echo custom_get_themeurl().'img/free-shipping.png'?>" class="free-shipping" alt="Free Shipping (within US) with order of 2 bottles or more" title="Free Shipping (within US) with order of 2 bottles or more" />
+        <img src="<?php echo do_shortcode('[upload_dir]') .'free-shipping.png'?>" class="free-shipping" alt="Free Shipping (within US) with order of 2 bottles or more" title="Free Shipping (within US) with order of 2 bottles or more" />
         <?php endif; ?>
     </div><!--end div.columns-->
     <div class="columns large-16 medium-16 small-24 productMeta">
