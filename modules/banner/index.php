@@ -277,7 +277,7 @@ function render_custom_product_banner() {
                             <div class="small-24 medium-7 columns">
                                 <span class="price" data-value="<?php echo format_currency($priceOne);?>">$<span><?php echo format_currency($priceOne);?></span></span>
                             </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-7 end columns">
+                            <div class="small-24 medium-8 end columns">
                                 <span class="savings">Save: $<span><?php echo format_currency($savingsOne);?></span>!</span>
                             </div> <!-- / .small-24 medium-5 end -->
                         </div> <!-- / .row small-collapse -->
