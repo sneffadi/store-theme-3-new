@@ -290,7 +290,7 @@ function render_custom_product_banner() {
                             <div class="small-24 medium-7 columns">
                                 <span class="price" data-value="<?php echo format_currency($priceTwo);?>">$<span><?php echo format_currency($priceTwo);?></span></span>
                             </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-7 end columns">
+                            <div class="small-24 medium-8 end columns">
                                 <span class="savings">Save: $<span><?php echo format_currency($savingsTwo);?></span>!</span>
                             </div> <!-- / .small-24 medium-5 end -->
                         </div> <!-- / .row small-collapse -->
@@ -303,7 +303,7 @@ function render_custom_product_banner() {
                             <div class="small-24 medium-7 columns">
                                 <span class="price" data-value="<?php echo format_currency($priceThree);?>">$<span><?php echo format_currency($priceThree);?></span></span>
                             </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-7 end columns">
+                            <div class="small-24 medium-8 end columns">
                                 <span class="savings">Save: $<span><?php echo format_currency($savingsThree);?></span>!</span>
                             </div> <!-- / .small-24 medium-5 end -->
                         </div> <!-- / .row small-collapse -->
