@@ -146,7 +146,7 @@ function guarantee($atts, $content = null) {
     if ($style == 2 && isset($subhead) && $subhead !== "") {
         $guarantee .= "<h4>{$subhead}</h4>";
     }
-    if ($image !=="" ) {
+    if ($image !==null ) {
         $guarantee .= "<img src=\"".do_shortcode('[upload_dir]'). $image ."\" class=\"show-for-small-only guarantee-img\"/>";
     }
     else {
