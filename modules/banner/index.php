@@ -110,6 +110,10 @@ function product_banner_callback($post) {
                 <textarea type="text" name="suppfacts-tab"><?php if ( isset ( $cf_value['suppfacts-tab'] ) ) echo $cf_value['suppfacts-tab'][0]; ?></textarea>
             </p>
             <p>
+                <label for="test-tab">Testimonials Tab (include p tags)</label>
+                <textarea type="text" name="test-tab"><?php if ( isset ( $cf_value['test-tab'] ) ) echo $cf_value['test-tab'][0]; ?></textarea>
+            </p>
+            <p>
                 <label for="faq-tab">FAQ Tab (include p tags)</label>
                 <textarea type="text" name="faq-tab"><?php if ( isset ( $cf_value['faq-tab'] ) ) echo $cf_value['faq-tab'][0]; ?></textarea>
             </p>
@@ -195,6 +199,9 @@ if((isset($_POST['cf_item_id_three']))&&($_POST['cf_item_id_three']!='')) {
     if((isset($_POST['suppfacts-tab']))&&($_POST['suppfacts-tab']!='')) {
         update_post_meta($post->ID, 'suppfacts-tab', $_POST['suppfacts-tab']);
     } else delete_post_meta($post->ID, 'suppfacts-tab');
+    if((isset($_POST['test-tab']))&&($_POST['test-tab']!='')) {
+        update_post_meta($post->ID, 'test-tab', $_POST['test-tab']);
+    } else delete_post_meta($post->ID, 'test-tab');
     if((isset($_POST['faq-tab']))&&($_POST['faq-tab']!='')) {
         update_post_meta($post->ID, 'faq-tab', $_POST['faq-tab']);
     } else delete_post_meta($post->ID, 'faq-tab');;
@@ -318,6 +325,7 @@ function render_custom_product_banner() {
 <?php
     $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon';
     $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon';
+    $test= isset($cf_value['test-tab']) ? $cf_value['test-tab'][0] : 'Coming Soon';
     $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon';
     if ($showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes')) { ?>
         <div class="row tabs-section">
@@ -328,6 +336,7 @@ function render_custom_product_banner() {
                             <ul class="tabs" data-tabs id="custom-tabs">
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
                               <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title"><a href="#suppfacts-panel">Supplement Facts</a></li> <?php } ?>
+                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title"><a href="#test-panel">Testimonials</a></li> <?php } ?>
                               <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title"><a href="#faq-panel">FAQ</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                
@@ -342,9 +351,16 @@ function render_custom_product_banner() {
                         </div> <!-- / .row -->  
                     </div>
                     <div class="content tabs-panel" id="suppfacts-panel">
-                        <div class="row">
+                        <div class="row ingredients">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($suppfacts); ?> 
+                            </div> <!-- / .small-24 columns -->
+                        </div> <!-- / .row -->
+                    </div>
+                    <div class="content tabs-panel" id="test-panel">
+                        <div class="row testimonials">
+                            <div class="small-24 columns">
+                                <?php echo do_shortcode($test); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
                     </div>
