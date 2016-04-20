@@ -19,13 +19,27 @@
 get_header(); ?>
 <div class="row"><!-- Row for main content area -->
     <div class="small-24 medium-24 columns" role="main">
+ <?php
+$the_key = 'ratings-overall-value';  // The meta key to sort on
+$args = array(
+   'meta_key' => $the_key,
+   'orderby' => 'meta_value'
+);
+global $wp_query;
+query_posts(
+    array_merge(
+        $wp_query->query,
+        $args
+    )
+);
+?>   
 <?php $productCount = 1; ?>
 <?php if(have_posts()):
     $options= get_option('theme_options');
     $num= !empty($options['ratings']) ? $options['ratings'] : "100";
     echo "<h4>All Products</h4>";
     echo "<div id=\"product_list\">";
-    query_posts($query_string.'&orderby=title&order=ASC');
+
     while(have_posts()):
         the_post(); ?>
         <?php
