@@ -27,6 +27,7 @@ function product_post_type() {
 				'title',
 				'editor',
 				'thumbnail',
+				'revisions'
 			),
 			'can_export' => true,
 			'taxonomies' => array(
