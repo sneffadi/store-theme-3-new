@@ -235,7 +235,7 @@ function render_custom_product_banner() {
             <img src="<?php echo custom_get_uploadurl().$customImg;?>" class="custom-image" />
         <?php if((isset($cf_value['cf_cb_show_guar']))&&($cf_value['cf_cb_show_guar'][0]==='yes')):
             ?>
-        <img src="<?php echo do_shortcode('[upload_dir]').'guarantee-seal.png'?>" class="guarantee-seal" alt="Money Back Guarantee" title="Money Back Guarantee" />
+        <img src="<?php echo do_shortcode('[upload_dir]').'guarantee.png'?>" class="guarantee-seal" alt="Money Back Guarantee" title="Money Back Guarantee" />
         <?php endif; ?>
         </div>
         <?php if((isset($cf_value['cf_cb_free_ship']))&&($cf_value['cf_cb_free_ship'][0]==='yes')):
