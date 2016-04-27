@@ -323,10 +323,10 @@ function render_custom_product_banner() {
     </div><!--end div.columns-->
 </div><!--end div.custom-product-banner-->
 <?php
-    $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon';
-    $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon';
-    $test= isset($cf_value['test-tab']) ? $cf_value['test-tab'][0] : 'Coming Soon';
-    $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon';
+    $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon1';
+    $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon2';
+    $test= isset($cf_value['test-tab']) ? $cf_value['test-tab'][0] : 'Coming Soon3';
+    $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon4';
     if ($showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes')) { ?>
         <div class="row tabs-section">
             <div class="small-24 column">
@@ -335,42 +335,42 @@ function render_custom_product_banner() {
                         <div class="small-24 columns">
                             <ul class="tabs" data-tabs id="custom-tabs">
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
-                              <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title"><a href="#suppfacts-panel">Supplement Facts</a></li> <?php } ?>
-                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title"><a href="#test-panel">Testimonials</a></li> <?php } ?>
-                              <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title"><a href="#faq-panel">FAQ</a></li> <?php } ?>
+                              <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Supplement Facts</a></li> <?php } ?>
+                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Testimonials</a></li> <?php } ?>
+                              <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#faq-panel">FAQ</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                
                     </div> <!-- / .row --> 
                 </div>
                 <div class="tabs-content" data-tabs-content="custom-tabs">
-                    <div class="content is-active tabs-panel" id="description-panel">
+                   <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?> <div class="content is-active tabs-panel" id="description-panel">
                         <div class="row">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($description); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->  
-                    </div>
-                    <div class="content tabs-panel" id="suppfacts-panel">
+                    </div> <?php } ?>
+                   <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?> <div class="content <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?> tabs-panel" id="suppfacts-panel">
                         <div class="row ingredients">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($suppfacts); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
-                    </div>
-                    <div class="content tabs-panel" id="test-panel">
+                    </div> <?php } ?>
+                    <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?> tabs-panel" id="test-panel">
                         <div class="row testimonials">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($test); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
-                    </div>
-                    <div class="content tabs-panel" id="faq-panel">
+                    </div> <?php } ?>
+                    <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?> tabs-panel" id="faq-panel">
                         <div class="row">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($faq); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
-                    </div>
+                    </div><?php } ?>
                 </div>
             </div> <!-- / .small-24 column -->
         </div> <!-- / .row tabs -->
