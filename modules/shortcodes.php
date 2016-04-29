@@ -364,7 +364,7 @@ function shipping_cost() {
 }
 
 function disclaimer () {
-    $disclaimer = "&nbsp;<span class=\"test-disclaimer\"><a href=\"#testimonial-disclaimer\">*Testimonial disclaimer</a></span>";
+    $disclaimer = "&nbsp;*Results in Testimonials are atypical and individual results may vary.";
     return $disclaimer;
 }
 function niche() {
