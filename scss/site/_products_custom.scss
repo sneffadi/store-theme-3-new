@@ -380,25 +380,6 @@
 			}
 		}
 	}
-	.guarantee {
-		background:#4D4D4D;
-		.guarantee-small {
-			width:rem-calc(125);
-			margin-right:rem-calc(15);
-		}
-		h2 {
-			text-align:left;
-			font-weight:800;
-			color:#EF030D;
-			text-shadow:2px 2px 2px #000;
-			@media #{$small-only} {
-				text-align:center;
-			}
-		}
-		p {
-			color:$white;
-		}
-	}
 	
 }
 .everlasting-t {
@@ -528,7 +509,7 @@
 				}
 			}
 		}
-		.guarantee, .bonus {
+		.bonus {
 			background:#0F6CAB;
 			h2 {
 				text-align:left;
@@ -540,7 +521,7 @@
 			p {
 				color:$white;
 			}
-			.guarantee-small, .bonus-small {
+			.bonus-small {
 				width:rem-calc(125);
 				margin-right:rem-calc(10);
 			}

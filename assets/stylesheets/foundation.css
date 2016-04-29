@@ -7789,7 +7789,7 @@ footer {
   border: none; }
 
 .custom-product-banner .tabs-title > a:focus, .custom-product-banner .tabs-title > a[aria-selected='true'] {
-  background: #39B8EE;
+  background: #033A61;
   color: #FFFFFF; }
 
 .custom-product-banner .tabs-title > a {
@@ -8529,22 +8529,6 @@ footer {
     .vydexafil .ingredients .suppfacts img {
       margin-bottom: 1.25rem; } }
 
-.vydexafil .guarantee {
-  background: #4D4D4D; }
-  .vydexafil .guarantee .guarantee-small {
-    width: 7.8125rem;
-    margin-right: 0.9375rem; }
-  .vydexafil .guarantee h2 {
-    text-align: left;
-    font-weight: 800;
-    color: #EF030D;
-    text-shadow: 2px 2px 2px #000; }
-    @media screen and (max-width: 39.9375em) {
-      .vydexafil .guarantee h2 {
-        text-align: center; } }
-  .vydexafil .guarantee p {
-    color: #FFFFFF; }
-
 .everlasting-t .everlasting-wrap h1, .everlasting-t .everlasting-wrap h2 {
   text-align: left;
   font-weight: 700; }
@@ -8645,17 +8629,17 @@ footer {
     font-size: 1.75rem;
     text-align: left; }
 
-.everlasting-t .everlasting-wrap .guarantee, .everlasting-t .everlasting-wrap .bonus {
+.everlasting-t .everlasting-wrap .bonus {
   background: #0F6CAB; }
-  .everlasting-t .everlasting-wrap .guarantee h2, .everlasting-t .everlasting-wrap .bonus h2 {
+  .everlasting-t .everlasting-wrap .bonus h2 {
     text-align: left;
     color: #FFFFFF; }
     @media screen and (max-width: 39.9375em) {
-      .everlasting-t .everlasting-wrap .guarantee h2, .everlasting-t .everlasting-wrap .bonus h2 {
+      .everlasting-t .everlasting-wrap .bonus h2 {
         text-align: center; } }
-  .everlasting-t .everlasting-wrap .guarantee p, .everlasting-t .everlasting-wrap .bonus p {
+  .everlasting-t .everlasting-wrap .bonus p {
     color: #FFFFFF; }
-  .everlasting-t .everlasting-wrap .guarantee .guarantee-small, .everlasting-t .everlasting-wrap .guarantee .bonus-small, .everlasting-t .everlasting-wrap .bonus .guarantee-small, .everlasting-t .everlasting-wrap .bonus .bonus-small {
+  .everlasting-t .everlasting-wrap .bonus .bonus-small {
     width: 7.8125rem;
     margin-right: 0.625rem; }
 

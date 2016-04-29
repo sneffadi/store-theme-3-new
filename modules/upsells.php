@@ -321,6 +321,7 @@ function top_products_cb() {
                 $sc_id= $id;
                 echo do_shortcode("<p>".get_post_meta($id, 'review-blurb', true)." [a]Read more...[/a]</p>");
             } ?>
+                <p>*Individual results may vary</p>
                     <div class="row collapse">
                         <div class="small-12 columns">
                             <a href="<?php echo get_permalink($id);?>" class="tiny button secondary radius"><?php echo $readMore;?></a>

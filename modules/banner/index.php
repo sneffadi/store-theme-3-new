@@ -290,6 +290,7 @@ function render_custom_product_banner() {
                         </div> <!-- / .row small-collapse -->
                     <?php $itemId= isset($cf_value['cf_item_id_one']) ? $cf_value['cf_item_id_one'][0] : '';
                     echo "<a href=\"" . do_shortcode('[cart_url]') . "?add=" . $itemId . "\" class=\"button add-to-cart addToCart button\" >" . "Add to Cart" . "</a>"; ?>   
+                        <p>*Individual results may vary</p>
                     </section>
                     <section class="tabs-panel" id="panel2">
                         <span class="retail" data-value="<?php echo format_currency($retailTwo);?>">$<span><?php echo format_currency($retailTwo);?></span></span>
