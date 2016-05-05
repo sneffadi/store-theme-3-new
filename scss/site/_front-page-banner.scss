@@ -4,6 +4,10 @@
         span.blue {
             color:$astronaut-blue;
         }
+        @media #{$small-only} {
+            font-size:rem-calc(32);
+            line-height:1;
+        }
     }
 
     #banner {
