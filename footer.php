@@ -49,7 +49,9 @@
 			<ul class="footer-bar">
 				<li>&copy; 2013-<?php echo date('Y');?>, <?php echo get_bloginfo('name'); ?></li>
 				 <li><a href="<?php echo site_url();?>/privacy.php" data-reveal-id="docsModal" data-reveal-ajax="true">Privacy Policy</a></li>
-				 <li><a href="<?php echo site_url();?>/terms.php" data-reveal-id="docsModal" data-reveal-ajax="true">Terms and Conditions</a></li></ul>
+				 <li><a href="<?php echo site_url();?>/terms.php" data-reveal-id="docsModal" data-reveal-ajax="true">Terms and Conditions</a></li>
+				 <li><a href="<?php echo site_url();?>/testimonial-disclaimer.html" data-reveal-id="docsModal" data-reveal-ajax="true">Testimonial Disclaimer</a></li>
+			</ul>
 		</div> <!-- / .small-12 -->
 	</div> <!-- / .row -->
 	<div id="docsModal" class="reveal-modal medium" data-reveal>Garbage</div><!-- / #docsModal keep empty -->
