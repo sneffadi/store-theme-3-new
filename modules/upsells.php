@@ -30,7 +30,7 @@ function top_products_cb() {
 <div class="row upsell collapse" id="top-rated-list">
     <div class="row collapse">
         <div class="small-24 columns">
-            <h2 class="top-list">Top <?php echo $idsCount;?> <span class="pink"><?php echo $niche; ?>s of <?php echo $year; ?></span></h2>
+            <h2 class="top-list">Top <?php echo $idsCount;?> Selling <span class="pink"><?php echo $niche; ?>s of <?php echo $year; ?></span></h2>
         </div><!--/small-12 columns-->
     </div><!--/row collapse-->
     <div class="row collapse">
