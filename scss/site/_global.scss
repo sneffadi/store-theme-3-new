@@ -2,7 +2,7 @@ h1 {
 	line-height:1.2;
 }
 p {
-	font-size:rem-calc(16);
+	font-size:rem-calc(20);
 }
 figure {
 	margin:0;
@@ -10,13 +10,18 @@ figure {
 .button {
 	text-decoration:none;
 	border-radius:rem-calc(5);
+	font-family:$font-family-sans-serif-heading;
+	font-weight:$font-weight-bold;
+	display:block;
+	width:100%;
+	padding:rem-calc(14);
 }
 .button.tiny {
 	font-weight:700;
 	font-size:rem-calc(14);
 }
 .button.secondary {
-	color:$body-font-color;
+	color:$white;
 }
 .reviews {
 	.ingredients {

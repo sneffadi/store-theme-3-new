@@ -4,15 +4,15 @@
 */
 
 // Set site width
-$grid-row-width: rem-calc(800);
+$grid-row-width: rem-calc(1000);
 $column-gutter: rem-calc(30);
-$imgPath: "/wp-content/uploads";
-//$imgPath: "http://localhost/topmaleenhancements.com/wp-content/uploads";
+//$imgPath: "/wp-content/uploads";
+$imgPath: "http://localhost/maleenhancementpills.com/wp-content/uploads";
 $grid-column-count: 24;
 
 // Typography
-$font-family-sans-serif: "pt-sans", Helvetica, Arial, sans-serif;
-$font-family-sans-serif-heading: "myriad-pro-semi-condensed", Helvetica, Arial, sans-serif;
+$font-family-sans-serif: "tablet-gothic", sans-serif;
+$font-family-sans-serif-heading: "tablet-gothic-condensed", sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $body-font-family: $font-family-sans-serif;
@@ -20,8 +20,8 @@ $header-font-family: $font-family-sans-serif-heading;
 
 $header-sizes: (
   small: (
-    'h1': 30,
-    'h2': 27,
+    'h1': 42,
+    'h2': 36,
     'h3': 24,
     'h4': 21,
     'h5': 18,
@@ -29,7 +29,7 @@ $header-sizes: (
   )
 );
 
-$h1-font-size: rem-calc(48);
+$h1-font-size: rem-calc(42);
 $h2-font-size: rem-calc(36);
 $h3-font-size: rem-calc(24);
 $h4-font-size: rem-calc(21);
@@ -82,7 +82,6 @@ $malachite: #0EDA73;
 $hibiscus: #C33374;
 $red: #C7003B;
 $guardsman-red: #CC0000;
-$astronaut-blue: #033960;
 
 /*=============================================
 =     Background Color and Font Color       =
@@ -90,26 +89,26 @@ $astronaut-blue: #033960;
 
 $body-bg: $white;
 $body-font-color: $jet;
-$anchor-color: $cerulean; //link color
+$anchor-color: #2367cc; //link color
 $foundation-palette: (
-  primary: $astronaut-blue, //color for a lot of elements
-  secondary: $mercury, //color of read review button
-  success: #88B609, //color of buttons
+  primary: #0560DC, //color for a lot of elements
+  secondary: #D4D4D4, //color of read review button
+  success: #44CA1A, //color of buttons
   warning: #ffae00,
   alert: #ec5840,
 );
 @include add-foundation-colors;
-$guarantee-banner: $ghost; //background color of guarantee
+$guarantee-banner: #F7F7F7; //background color of guarantee
 $guarantee-bg: $guarantee-banner;
 $guarantee-text: inherit;
 $upsell-bg: $link-water; //sidebar upsell bg;
 $upsell-border-color: $curious-blue; //sidebar upsell border color;
-$topbar-background: $white; // desktop nav bg
+$topbar-background: #2367CC; // desktop nav bg
 $topbar-color: $white;
 $topbar-dropdown-bg: $white;
 $topbar-border-bottom: rem-calc(5px) solid $primary-color;
 $topbar-bg-hover: scale-color($topbar-background, $lightness: -10%);
-$titlebar-background: $white; // small/medium nav bg
+$titlebar-background: #2367CC; // small/medium nav bg
 $titlebar-icon-color: $aluminum; //hamburger color
 $titlebar-left-section-border: solid 1px scale-color($titlebar-background, $lightness: -10%);
 $sidebar-border: $iron; //color of border of sidebar boxes and upsell table
@@ -127,7 +126,7 @@ $logo-max-width: none;
 $logo-section-height: auto;
 $logo-section-padding: rem-calc(15) 0;
 
-$rating-bg-color: $guardsman-red; //backgorund of rating bar
+$rating-bg-color: #F11E1E; //backgorund of rating bar
 $rating-border-color: $aluminum; //border of rating bar
 
 $topbar-dropdown-link-bg: $charcoal;
@@ -162,7 +161,7 @@ $topbar-margin-left: $column-gutter / 2; // align left side of logo with content
 $titlebar-height: rem-calc(45);
 $tabbar-margin-top: rem-calc(0); // vertically center logo
 
-$tip-top-bg-color: $oil;
+$tip-top-bg-color: #1C58B1;
 $tip-top-color: $white;
 $tip-top-height: rem-calc(32);
 $tip-top-font-size: rem-calc(14);
@@ -185,6 +184,8 @@ $button-font-align: center;
 //Ratings
 $rating-font-size: rem-calc(13);
 $inline-list-bottom-margin: rem-calc(0);
+$star-size: rem-calc(22);
+$small-star: rem-calc(17);
 
 //sidebar
 $sidebar-text-margin: 0 0 rem-calc(8) 0;
@@ -210,3 +211,11 @@ $xlarge-breakpoint: em-calc(1920);
     padding-right: $column-gutter / 4;
     float: left;
 }
+// 17. Dropdown Menu
+// -----------------
+
+$dropdownmenu-arrows: true;
+$dropdownmenu-arrow-color: $anchor-color;
+$dropdownmenu-min-width: 200px;
+$dropdownmenu-background: $white;
+$dropdownmenu-border: none;

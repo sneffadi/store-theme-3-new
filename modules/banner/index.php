@@ -45,58 +45,41 @@ function product_banner_callback($post) {
         <label><input type="checkbox" name="cf_cb_free_ship" <?php echo $checked;?> /> Free Shipping</label>
         
         <p>
+            <label>Item ID:</label>
+            <?php $itemId= isset($cf_value['cf_item_id']) ? $cf_value['cf_item_id'][0] : ''; ?>
+            <input type="text" name="cf_item_id" value="<?php echo $itemId;?>" style="width:25%" />
+        </p>
+        <p>
             <label>Retail Price:</label>
             <?php $retail= isset($cf_value['cf_retail_price']) ? $cf_value['cf_retail_price'][0] : ''; ?>
             $ <input type="text" name="cf_retail_price" value="<?php echo $retail;?>" style="width:25%" />
         </p>
         <p>
-            <label>Store Price 1:</label>
-            <?php $priceOne= isset($cf_value['cf_store_price_one']) ? $cf_value['cf_store_price_one'][0] : ''; ?>
-            $ <input type="text" name="cf_store_price_one" value="<?php echo $priceOne;?>" style="width:25%" />
+            <label>Store Price:</label>
+            <?php $price= isset($cf_value['cf_store_price']) ? $cf_value['cf_store_price'][0] : ''; ?>
+            $ <input type="text" name="cf_store_price" value="<?php echo $price;?>" style="width:25%" />
         </p>
         <p>
-            <label>Item ID 1:</label>
-            <?php $itemId= isset($cf_value['cf_item_id_one']) ? $cf_value['cf_item_id_one'][0] : ''; ?>
-            <input type="text" name="cf_item_id_one" value="<?php echo $itemId;?>" style="width:25%" />
-        </p>
-        <p>
-            <label>Store Price 2:</label>
-            <?php $priceTwo= isset($cf_value['cf_store_price_two']) ? $cf_value['cf_store_price_two'][0] : ''; ?>
-            $ <input type="text" name="cf_store_price_two" value="<?php echo $priceTwo;?>" style="width:25%" />
-        </p>
-        <p>
-            <label>Item ID 2:</label>
-            <?php $itemIdTwo= isset($cf_value['cf_item_id_two']) ? $cf_value['cf_item_id_two'][0] : ''; ?>
-            <input type="text" name="cf_item_id_two" value="<?php echo $itemIdTwo;?>" style="width:25%" />
-        </p>
-        <p>
-            <label>Store Price 3:</label>
-            <?php $priceThree= isset($cf_value['cf_store_price_three']) ? $cf_value['cf_store_price_three'][0] : ''; ?>
-            $ <input type="text" name="cf_store_price_three" value="<?php echo $priceThree;?>" style="width:25%" />
-        </p>
-        <p>
-            <label>Item ID 3:</label>
-            <?php $itemIdThree= isset($cf_value['cf_item_id_three']) ? $cf_value['cf_item_id_three'][0] : ''; ?>
-            <input type="text" name="cf_item_id_three" value="<?php echo $itemIdThree;?>" style="width:25%" />
-        </p>
-        <p>
-            <label>Bottle Image</label>
-            <?php $bannerImg= isset($cf_value['cf_banner_image']) ? $cf_value['cf_banner_image'][0] : ''; ?>
-            <input type="text" name="cf_banner_image" value="<?php echo $bannerImg;?>" style="width:50%" /> <span class="prompt">(File path relative to the media upload directory)</span>
-        </p>
-        <p>
-            <label>Product Sub-Header</label>
-            <?php $bannerSubheader= isset($cf_value['cf_banner_subheader']) ? $cf_value['cf_banner_subheader'][0] : ''; ?>
-            <input type="text" name="cf_banner_subheader" value="<?php echo $bannerSubheader;?>"/>
-        </p>
-         <?php for($i=1;$i<5;$i++):
+            <label>Banner Image(s)</label>
+        <?php 
+            $i = 1;
+            $html = '';
+            $cf_value = get_post_meta($post->ID);
+            while(!empty($cf_value["cf_banner_image{$i}"][0]) && $cf_value["cf_banner_image{$i}"][0] != '' || $i == 1){
+                $html.= "<input type=\"text\" name=\"cf_banner_image{$i}\" value=\"" . (isset($cf_value["cf_banner_image{$i}"]) ? $cf_value["cf_banner_image{$i}"][0] : '') . "\" />";
+                $i++;
+                
+            }
+            $html.= '<div class="add clear"><a href="#" class="addImage">Add Image [+]</a></div>';
+            $html.= '<input type="hidden" name="'  . 'imageCount' . '" value="' . ($i - 1) . '" />';
+            echo $html;
         ?>
-        <p>
-            <label>Product Bullet-point #<?php echo $i;?></label>
-            <?php $bannerImg= isset($cf_value['cf_prod_bullet_point_'.$i]) ? $cf_value['cf_prod_bullet_point_'.$i][0] : ''; ?>
-            <input type="text" name="cf_prod_bullet_point_<?php echo $i;?>" value="<?php echo $bannerImg;?>"/>
+
         </p>
-    <?php endfor; ?>
+        <p>
+            <label for="top-blurb">Top blurb (include p tags)</label>
+            <textarea type="text" name="top-blurb"><?php if ( isset ( $cf_value['top-blurb'] ) ) echo $cf_value['top-blurb'][0]; ?></textarea>
+        </p>
         <?php $checked= isset($cf_value['cf_custom_tabs']) ? checked($cf_value['cf_custom_tabs'][0], 'yes', FALSE) : '';
         $showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes'); ?>
         <label><input type="checkbox" name="cf_custom_tabs" <?php echo $checked;?> class="toggle-div" data-toggle-div="custom-product-tabs" /> Add Tabs</label>
@@ -131,6 +114,7 @@ function product_banner_callback($post) {
             });
         });
     })(jQuery.noConflict());
+
 </script>
     <?php
 }
@@ -153,43 +137,23 @@ function product_banner_save($post_id) {
     if((isset($_POST['cf_cb_free_ship']))&&($_POST['cf_cb_free_ship']!='')) {
         update_post_meta($post->ID, 'cf_cb_free_ship', 'yes');
     } else delete_post_meta($post->ID, 'cf_cb_free_ship');
-    if((isset($_POST['cf_item_id_one']))&&($_POST['cf_item_id_one']!='')) {
-        update_post_meta($post->ID, 'cf_item_id_one', esc_attr($_POST['cf_item_id_one']));
-    } else delete_post_meta($post->ID, 'cf_item_id_one');
-    if((isset($_POST['cf_item_id_two']))&&($_POST['cf_item_id_two']!='')) {
-        update_post_meta($post->ID, 'cf_item_id_two', esc_attr($_POST['cf_item_id_two']));
-    } else delete_post_meta($post->ID, 'cf_item_id_two');
-if((isset($_POST['cf_item_id_three']))&&($_POST['cf_item_id_three']!='')) {
-        update_post_meta($post->ID, 'cf_item_id_three', esc_attr($_POST['cf_item_id_three']));
-    } else delete_post_meta($post->ID, 'cf_item_id_three');
-    if((isset($_POST['cf_store_price_three']))&&($_POST['cf_store_price_three']!='')) {
-        update_post_meta($post->ID, 'cf_store_price_three', esc_attr($_POST['cf_store_price_three']));
-    } else delete_post_meta($post->ID, 'cf_store_price_three');
-
+    if((isset($_POST['cf_item_id']))&&($_POST['cf_item_id']!='')) {
+        update_post_meta($post->ID, 'cf_item_id', esc_attr($_POST['cf_item_id']));
+    } else delete_post_meta($post->ID, 'cf_item_id');
     if((isset($_POST['cf_retail_price']))&&($_POST['cf_retail_price']!='')) {
         update_post_meta($post->ID, 'cf_retail_price', esc_attr($_POST['cf_retail_price']));
     } else delete_post_meta($post->ID, 'cf_retail_price');
-    if((isset($_POST['cf_store_price_one']))&&($_POST['cf_store_price_one']!='')) {
-        update_post_meta($post->ID, 'cf_store_price_one', esc_attr($_POST['cf_store_price_one']));
-    } else delete_post_meta($post->ID, 'cf_store_price_one');
-    if((isset($_POST['cf_store_price_two']))&&($_POST['cf_store_price_two']!='')) {
-        update_post_meta($post->ID, 'cf_store_price_two', esc_attr($_POST['cf_store_price_two']));
-    } else delete_post_meta($post->ID, 'cf_store_price_two');
-    if((isset($_POST['cf_store_price_three']))&&($_POST['cf_store_price_three']!='')) {
-        update_post_meta($post->ID, 'cf_store_price_three', esc_attr($_POST['cf_store_price_three']));
-    } else delete_post_meta($post->ID, 'cf_store_price_three');
-    if((isset($_POST['cf_banner_image']))&&($_POST['cf_banner_image']!='')) {
-        update_post_meta($post->ID, 'cf_banner_image', esc_attr($_POST['cf_banner_image']));
-    } else delete_post_meta($post->ID, 'cf_banner_image');
+    if((isset($_POST['cf_store_price']))&&($_POST['cf_store_price']!='')) {
+        update_post_meta($post->ID, 'cf_store_price', esc_attr($_POST['cf_store_price']));
+    } else delete_post_meta($post->ID, 'cf_store_price');
+
     if((isset($_POST['cf_banner_subheader']))&&($_POST['cf_banner_subheader']!='')) {
         update_post_meta($post->ID, 'cf_banner_subheader', esc_attr($_POST['cf_banner_subheader']));
     } else delete_post_meta($post->ID, 'cf_banner_subheader');
+    if((isset($_POST['top-blurb']))&&($_POST['top-blurb']!='')) {
+        update_post_meta($post->ID, 'top-blurb', $_POST['top-blurb']);
+    } else delete_post_meta($post->ID, 'top-blurb');
     
-    for($i=1;$i<5;$i++) {
-        if((isset($_POST['cf_prod_bullet_point_'.$i]))&&($_POST['cf_prod_bullet_point_'.$i]!='')) {
-            update_post_meta($post->ID, 'cf_prod_bullet_point_'.$i, esc_attr($_POST['cf_prod_bullet_point_'.$i]));
-        } else delete_post_meta($post->ID, 'cf_prod_bullet_point_'.$i);
-    }
     if((isset($_POST['cf_custom_tabs']))&&($_POST['cf_custom_tabs']!='')) {
         update_post_meta($post->ID, 'cf_custom_tabs', 'yes');
     } else delete_post_meta($post->ID, 'cf_custom_tabs');
@@ -204,11 +168,47 @@ if((isset($_POST['cf_item_id_three']))&&($_POST['cf_item_id_three']!='')) {
     } else delete_post_meta($post->ID, 'test-tab');
     if((isset($_POST['faq-tab']))&&($_POST['faq-tab']!='')) {
         update_post_meta($post->ID, 'faq-tab', $_POST['faq-tab']);
-    } else delete_post_meta($post->ID, 'faq-tab');;
+    } else delete_post_meta($post->ID, 'faq-tab');
+
+    $cf_value = get_post_meta($post_id);
+    $i = 1;
+    while (isset($_POST['cf_banner_image' . $i])) {
+        if (isset($_POST['cf_banner_image' . $i])) {
+            update_post_meta($post_id, 'cf_banner_image' . $i, sanitize_text_field($_POST['cf_banner_image' . $i]));
+        }
+        else {
+            delete_post_meta($post_id, "cf_banner_image{$i}");
+        }
+        if (isset($_POST['imageCount'])) {
+            update_post_meta($post_id, 'imageCount', sanitize_text_field($_POST['imageCount']));
+        }
+        else {
+            update_post_meta($post_id, 'imageCount', 1);
+        }
+        $i++;
+    }
 }
 add_action('save_post', 'product_banner_save');
 
 /*-----  End Custom Fields  ------*/
+
+/*====================================
+=            Load Scripts            =
+====================================*/
+
+//enqueue script for module and image loader
+function banner_image_enqueue() {
+    global $typenow;
+    if ($typenow == 'products') {
+        wp_enqueue_media();
+
+        // Registers and enqueues the required javascript.
+        wp_register_script( 'banner-script', MODULE_PATH . 'banner/' . 'script.js', array( 'jquery' ) );
+        wp_enqueue_script( 'banner-script' );
+    }
+}
+add_action('admin_enqueue_scripts', 'banner_image_enqueue');
+
 
 /*=============================================
 =                 Product Banner              =
@@ -223,8 +223,11 @@ function format_currency($value) {
 
 function render_custom_product_banner() {
     $postId= get_the_ID();
+    $options = get_option('theme_options');
+    $num = !empty($options['ratings']) ? $options['ratings'] : "100";
     $cf_value= get_post_meta($postId);
-    $priceOne = get_post_meta($postId, "cf_store_price_one", true);
+    $themeOptions= get_option('theme_options');
+    $priceOne = get_post_meta($postId, "cf_store_price", true);
     $priceTwo = get_post_meta($postId, "cf_store_price_two", true);
     $priceThree = get_post_meta($postId, "cf_store_price_three", true);
     $retail = get_post_meta($postId, "cf_retail_price", true);
@@ -233,96 +236,123 @@ function render_custom_product_banner() {
     $savingsOne = $retail - $priceOne;
     $savingsTwo = $retailTwo - $priceTwo;
     $savingsThree = $retailThree - $priceThree;
+    $itemId= isset($cf_value['cf_item_id']) ? $cf_value['cf_item_id'][0] : '';
     if($showCustom= (isset($cf_value['cf_custom_banner']))&&($cf_value['cf_custom_banner'][0]==='yes')):
         ?>
-<div class="row custom-product-banner">
-    <div class="columns large-8 medium-8 small-24">
-        <?php $customImg= isset($cf_value['cf_banner_image']) ? $cf_value['cf_banner_image'][0] : ''; ?>
-        <div class="imgBox">
-            <img src="<?php echo custom_get_uploadurl().$customImg;?>" class="custom-image" />
-        <?php if((isset($cf_value['cf_cb_show_guar']))&&($cf_value['cf_cb_show_guar'][0]==='yes')):
-            ?>
-        <img src="<?php echo do_shortcode('[upload_dir]').'guarantee.png'?>" class="guarantee-seal" alt="Money Back Guarantee" title="Money Back Guarantee" />
-        <?php endif; ?>
+<div class="row custom-product-banner medium-collapse">
+    <div class="columns medium-10 small-24">
+        
+        <div class="tabs-content" data-tabs-content="image-tabs">
+            <?php 
+                $j = 1;
+                $slides = '';
+                while(($sfImg= get_post_meta(get_the_ID(), 'cf_banner_image'.$j, TRUE))!=='') {
+                    $slides .= '<div class="tabs-panel';
+                    if ($j ==1) {$slides .= ' is-active';}
+                    $slides .= '" id="panel'.$j.'">';
+                    $slides .= '<img src="'.custom_get_uploadurl().$sfImg.'" class="img-large" />';
+                    $slides .= '</div>';
+                    
+                    $j++;
+                } 
+            echo $slides;?>
         </div>
+        <ul class="tabs" data-tabs id="image-tabs">
+            <?php 
+                $i = 1;
+                $slides = '';
+                while(($sfImg= get_post_meta(get_the_ID(), 'cf_banner_image'.$i, TRUE))!=='') {
+                    $slides .= '<li class="tabs-title';
+                    if ($i ==1) {$slides .= ' is-active';}
+                    $slides .= '"><a href="#panel'.$i.'"';
+                    if ($i ==1) {$slides .= ' aria-selected="true"';}
+                    $slides .= '>';
+                    $slides .= '<img src="'.custom_get_uploadurl().$sfImg.'" class="image-thumbnail" />';
+                    $slides .= '</a></li>';
+                    $i++;
+                } 
+                echo $slides;?>
+        </ul>
+
         <?php if((isset($cf_value['cf_cb_free_ship']))&&($cf_value['cf_cb_free_ship'][0]==='yes')):
             ?>
         <img src="<?php echo do_shortcode('[upload_dir]') .'free-shipping.png'?>" class="free-shipping" alt="Free Shipping (within US) with order of 2 bottles or more" title="Free Shipping (within US) with order of 2 bottles or more" />
         <?php endif; ?>
     </div><!--end div.columns-->
-    <div class="columns large-16 medium-16 small-24 productMeta">
-        <h1><?php the_title();?></h1>
+    <div class="columns medium-13 small-24 productMeta">
+
+        <div class="row prod-title medium-collapse">
+            <div class="small-12 columns">
+                <h1><?php the_title();?></h1>
+            </div>
+            <div class="small-12 columns">
+                <div class="criterion-row row">
+                    <?php $thisRating= get_post_meta($postId, 'ratings-overall-value', TRUE);
+                    $thisRating= number_format(floatval($thisRating), 1); ?>
+                    <div class="small-18 columns star-col">
+                        <div class="star-positioner">
+                            <div class="stars">
+                                <div class="colorbar" style="width:<?php echo $thisRating*20;?>%">
+                                    
+                                </div>
+                                <div class="star_holder">
+                                    <div class="star star-1"></div> <!-- / .star -->
+                                    <div class="star star-2"></div> <!-- / .star -->
+                                    <div class="star star-3"></div> <!-- / .star -->
+                                    <div class="star star-4"></div> <!-- / .star -->
+                                    <div class="star star-5"></div> <!-- / .star -->
+                                </div> <!-- / .star_holder -->
+                            </div> <!-- / .stars -->
+                        </div> <!-- / .star-positioner -->
+                    </div><!--/medium-5 columns show-for-medium-->
+                    <div class="small-6 columns out-of">
+                        <?php echo $thisRating."/".$num; ?>
+                    </div><!--/ small-3 medium-2 columns out-of -->
+                </div><!--/ criterion-row row -->
+            </div>
+        </div>
+        
         <?php $bannerSubheader= isset($cf_value['cf_banner_subheader']) ? $cf_value['cf_banner_subheader'][0] : '';
         if(($bannerSubheader!==FALSE)&&($bannerSubheader!=='')):
             ?>
         <h2><?php echo $bannerSubheader;?></h2>
         <?php endif;
-        $bannerBp= isset($cf_value['cf_prod_bullet_point_1']) ? $cf_value['cf_prod_bullet_point_1'][0] : '';
-        if(($bannerBp!==FALSE)&&($bannerBp!=='')):
-            $i= 1; ?>
-        <ul>
-            <?php while($bannerBp):
-                ?>
-            <li><?php echo $bannerBp;?></li>
-                <?php $i++;
-                $bannerBp= isset($cf_value['cf_prod_bullet_point_'.$i]) ? $cf_value['cf_prod_bullet_point_'.$i][0] : '';
-            endwhile; ?>
-        </ul>
-        <?php endif;
+            $topBlurb = isset($cf_value['top-blurb']) ? $cf_value['top-blurb'][0] : '';
+            echo do_shortcode($topBlurb);
+        ?>
+        <?php 
         $themeOptions= get_option('theme_options');?>
-        <form class="addProductForm" action="<?php echo $themeOptions['cart-url'];?>" method="GET">
-            <div class="hBorders qtyBox">
-                <ul class="tabs" data-tabs id="buy-tabs">
-                    <li class="tabs-title is-active" role="presentation"><a href="#panel1" aria-selected="true">1 Bottle</a></li>
-                    <?php if((isset($cf_value['cf_item_id_two']))&&($cf_value['cf_item_id_two']!='')) { ?><li class="tabs-title"><a href="#panel2">2 Bottles</a></li><?php } ?>
-                    <?php if((isset($cf_value['cf_item_id_three']))&&($cf_value['cf_item_id_three']!='')) { ?><li class="tabs-title"><a href="#panel3">3 Bottles</a></li><?php } ?>
-                </ul>
-                <div class="tabs-content" data-tabs-content="buy-tabs">
-                    <section class="tabs-panel is-active" id="panel1">
-                        <span class="retail" data-value="<?php echo format_currency($retail);?>">$<span><?php echo format_currency($retail);?></span></span>
-                        <div class="row collapse pricing">
-                            <div class="small-24 medium-7 columns">
-                                <span class="price" data-value="<?php echo format_currency($priceOne);?>">$<span><?php echo format_currency($priceOne);?></span></span>
-                            </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-8 end columns">
-                                <span class="savings">Save: $<span><?php echo format_currency($savingsOne);?></span>!</span>
-                            </div> <!-- / .small-24 medium-5 end -->
-                        </div> <!-- / .row small-collapse -->
-                    <?php $itemId= isset($cf_value['cf_item_id_one']) ? $cf_value['cf_item_id_one'][0] : '';
-                    echo "<a href=\"" . do_shortcode('[cart_url]') . "?add=" . $itemId . "\" class=\"button add-to-cart addToCart button\" >" . "Add to Cart" . "</a>"; ?>   
-                        
-                    </section>
-                    <section class="tabs-panel" id="panel2">
-                        <span class="retail" data-value="<?php echo format_currency($retailTwo);?>">$<span><?php echo format_currency($retailTwo);?></span></span>
-                        <div class="row collapse pricing">
-                            <div class="small-24 medium-7 columns">
-                                <span class="price" data-value="<?php echo format_currency($priceTwo);?>">$<span><?php echo format_currency($priceTwo);?></span></span>
-                            </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-8 end columns">
-                                <span class="savings">Save: $<span><?php echo format_currency($savingsTwo);?></span>!</span>
-                            </div> <!-- / .small-24 medium-5 end -->
-                        </div> <!-- / .row small-collapse -->
-                    <?php $itemId= isset($cf_value['cf_item_id_two']) ? $cf_value['cf_item_id_two'][0] : '';
-                    echo "<a href=\"" . do_shortcode('[cart_url]') . "?add=" . $itemId . "\" class=\"button add-to-cart addToCart button\" >" . "Add to Cart" . "</a>"; ?>
-                    </section>
-                    <section class="tabs-panel " id="panel3">
-                        <span class="retail">$<span><?php echo format_currency($retailThree);?></span></span>
-                        <div class="row collapse pricing">
-                            <div class="small-24 medium-7 columns">
-                                <span class="price" data-value="<?php echo format_currency($priceThree);?>">$<span><?php echo format_currency($priceThree);?></span></span>
-                            </div> <!-- / .small-24 medium-8 columns -->
-                            <div class="small-24 medium-8 end columns">
-                                <span class="savings">Save: $<span><?php echo format_currency($savingsThree);?></span>!</span>
-                            </div> <!-- / .small-24 medium-5 end -->
-                        </div> <!-- / .row small-collapse -->
-                    <?php $itemId= isset($cf_value['cf_item_id_three']) ? $cf_value['cf_item_id_three'][0] : '';
-                    echo "<a href=\"" . do_shortcode('[cart_url]') . "?add=" . $itemId . "\" class=\"button add-to-cart addToCart button\" >" . "Add to Cart" . "</a>";?>
-                    </section>
-                    <p>*Individual results may vary</p>
-                </div>
+        
+
+        <script>
+        function modify_qty(val) {
+            var qty = document.getElementById('qty').value;
+            var new_qty = parseInt(qty,10) + val;
+            
+            if (new_qty < 1) {
+                new_qty = 1;
+            }
+            var value = document.getElementById('price').getAttribute('data-value');
+            document.getElementById('qty').value = new_qty;
+            document.getElementById('price').innerHTML = (value * new_qty).toFixed(2);
+            return new_qty;
+        }
+        </script>
+        <form class="addProductForm" action="<?php echo do_shortcode('[cart_url]');?>" method="GET">
+            <div class="priceWrap">
+            $<span id="price" data-value="<?php echo format_currency($priceOne);?>"><?php echo format_currency($priceOne);?></span>
             </div>
+            Quantity
+            <div class="box radius">    
+                <span id="down" onclick="modify_qty(-1)">-</span>
+                <input id="qty" name="ADD_<?php echo $itemId ?>" value="1" readonly/>
+                <span id="up" onclick="modify_qty(1)">+</span>
+                
+            </div>
+            <button type="submit" class="addToCart button">Add to Cart</button>
         </form>
     </div><!--end div.columns-->
+    
 </div><!--end div.custom-product-banner-->
 <?php
     $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon1';
@@ -334,11 +364,11 @@ function render_custom_product_banner() {
             <div class="small-24 column">
                 <div class="border-wrap">
                     <div class="row">
-                        <div class="small-24 columns">
+                        <div class="small-20 small-centered columns">
                             <ul class="tabs" data-tabs id="custom-tabs">
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
-                              <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Supplement Facts</a></li> <?php } ?>
-                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Testimonials</a></li> <?php } ?>
+                              <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Ingredients</a></li> <?php } ?>
+                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Reviews</a></li> <?php } ?>
                               <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#faq-panel">FAQ</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                
@@ -346,28 +376,28 @@ function render_custom_product_banner() {
                 </div>
                 <div class="tabs-content" data-tabs-content="custom-tabs">
                    <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?> <div class="content is-active tabs-panel" id="description-panel">
-                        <div class="row">
+                        <div class="row small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($description); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->  
                     </div> <?php } ?>
                    <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?> <div class="content <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?> tabs-panel" id="suppfacts-panel">
-                        <div class="row ingredients">
+                        <div class="row ingredients small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($suppfacts); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
                     </div> <?php } ?>
                     <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?> tabs-panel" id="test-panel">
-                        <div class="row testimonials">
+                        <div class="row testimonials small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($test); ?> 
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
                     </div> <?php } ?>
                     <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?> tabs-panel" id="faq-panel">
-                        <div class="row">
+                        <div class="row small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($faq); ?> 
                             </div> <!-- / .small-24 columns -->

@@ -23,30 +23,32 @@ function rating_meta_callback( $post ) {
     ?>
     <div id="ratings">
         <p>
-            <label for="ratings-overall-value">Overall Value</label>
+            <label for="ratings-overall-value">Overall Rating</label>
             <input type="number" step="any" name="ratings-overall-value" value="<?php if ( isset ( $cf['ratings-overall-value'] ) ) echo $cf['ratings-overall-value'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
         </p>
         <p>
-            <label for="ratings-effectiveness">Effectiveness</label>
+            <label for="ratings-ingredient-quality">Ingredient Quality</label>
+            <input type="number" step="any" name="ratings-ingredient-quality" value="<?php if ( isset ( $cf['ratings-ingredient-quality'] ) ) echo $cf['ratings-ingredient-quality'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
+        </p>
+        <p>
+            <label for="ratings-effectiveness">Enlargement Power</label>
             <input type="number" step="any" name="ratings-effectiveness" value="<?php if ( isset ( $cf['ratings-effectiveness'] ) ) echo $cf['ratings-effectiveness'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
         </p>
         <p>
-            <label for="ratings-speed-of-results">Speed of Results</label>
-            <input type="number" step="any" name="ratings-speed-of-results" value="<?php if ( isset ( $cf['ratings-speed-of-results'] ) ) echo $cf['ratings-speed-of-results'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
+            <label for="ratings-long-term-results">Long-Term Results</label>
+            <input type="number" step="any" name="ratings-long-term-results" value="<?php if ( isset ( $cf['ratings-long-term-results'] ) ) echo $cf['ratings-long-term-results'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
+        </p>
+        <p>
+            <label for="ratings-customer-reviews">Customer Reviews</label>
+            <input type="number" step="any" name="ratings-customer-reviews" value="<?php if ( isset ( $cf['ratings-customer-reviews'] ) ) echo $cf['ratings-customer-reviews'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
         </p>
         <p>
             <label for="ratings-product-safety">Product Safety</label>
             <input type="number" step="any" name="ratings-product-safety" value="<?php if ( isset ( $cf['ratings-product-safety'] ) ) echo $cf['ratings-product-safety'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
         </p>
-        <p>
-            <label for="ratings-ingredient-quality">Ingredient</label>
-            <input type="number" step="any" name="ratings-ingredient-quality" value="<?php if ( isset ( $cf['ratings-ingredient-quality'] ) ) echo $cf['ratings-ingredient-quality'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
-        </p>
+        
 
-        <p>
-            <label for="ratings-long-term-results">Long-Term Results</label>
-            <input type="number" step="any" name="ratings-long-term-results" value="<?php if ( isset ( $cf['ratings-long-term-results'] ) ) echo $cf['ratings-long-term-results'][0]; ?>" /> / <?php echo !empty($options['ratings']) ? $options['ratings'] : "100"; ?>
-        </p>
+        
         <p>
             <label for="ratings-guarantee">Guarantee</label>
             <input type="text" name="ratings-guarantee" value="<?php if ( isset ( $cf['ratings-guarantee'] ) ) echo $cf['ratings-guarantee'][0]; ?>" />
@@ -92,8 +94,8 @@ function rating_meta_save( $post_id ) {
     if( isset( $_POST[ 'ratings-effectiveness' ] ) ) {
         update_post_meta( $post_id, 'ratings-effectiveness', sanitize_text_field( $_POST[ 'ratings-effectiveness' ] ) );
     }
-    if( isset( $_POST[ 'ratings-speed-of-results' ] ) ) {
-        update_post_meta( $post_id, 'ratings-speed-of-results', sanitize_text_field( $_POST[ 'ratings-speed-of-results' ] ) );
+    if( isset( $_POST[ 'ratings-customer-reviews' ] ) ) {
+        update_post_meta( $post_id, 'ratings-customer-reviews', sanitize_text_field( $_POST[ 'ratings-customer-reviews' ] ) );
     }
     if( isset( $_POST[ 'ratings-product-safety' ] ) ) {
         update_post_meta( $post_id, 'ratings-product-safety', sanitize_text_field( $_POST[ 'ratings-product-safety' ] ) );

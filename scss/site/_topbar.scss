@@ -1,5 +1,5 @@
 .tip-top {
-    text-align: left;
+    text-align: right;
     background: $tip-top-bg-color;
     color: $tip-top-color;
     line-height: $tip-top-height;
@@ -14,8 +14,8 @@
         padding-right: rem-calc(12);
         margin-left: rem-calc(12);
         margin-right: rem-calc(12);
-        border-left: rem-calc(1) solid #423E3F;
-        border-right: rem-calc(1) solid #423E3F;
+        border-left: rem-calc(1) solid #0E4596;
+        border-right: rem-calc(1) solid #0E4596;
     }
 
     .email {
@@ -29,12 +29,14 @@
     a {
         color: $tip-top-link-color;
         text-decoration: none;
+        font-weight: $font-weight-bold;
 
         &:hover {
             text-decoration: underline;
         }
     }
 }
+
 
 /* Navigation breakpoints */
 
@@ -99,6 +101,7 @@
 /* Tablet and desktop menu */
 .top-bar-section li:not(.has-form) a:not(.button) {
     background: none;
+    text-decoration: none;
 }
 
 .top-bar.logo-section {
@@ -108,17 +111,20 @@
     img.mfes-trustmark {
         height: rem-calc(30);
         width: auto;
+        float:right;
+        margin-top:rem-calc(4);
+        margin-left:rem-calc(10);
     }
 }
 
 .top-bar-section ul li {
     background: none;
-    color: inherit;
+    color: $white;
 }
 
 .top-bar-section li.active:not(.has-form) a:not(.button) {
     background: none;
-    color: inherit;
+    color: $white;
 }
 
 .top-bar-section li.active:not(.has-form) a:not(.button):hover {
@@ -141,7 +147,7 @@
         font-size: rem-calc(18);
 
         a {
-            color: #000;
+            color: $topbar-color;
             text-decoration: none;
 
             i {
@@ -155,25 +161,14 @@
     }
 
 }
-#navWrap {
-    border-width: rem-calc(1) 0 rem-calc(1) 0;
-    border-color: $body-font-color;
-    border-style: solid;
-    .top-bar {
-        .top-bar-section {
-            ul.top-bar-menu {
-                margin:0;
-                li {
-                    list-style-type:none;
-                    display:inline-block;
-                    font-size:rem-calc(18);
-                    padding:rem-calc(6) 0;
-                    a {
-                        padding:0 rem-calc(10);
-                        color:$body-font-color;
-                        text-decoration:none;
-                    }
-                }
+.top-bar-section {
+    ul.desktop-menu {
+        float:left;
+        li {
+            border-left:2px solid #1C58B1;
+            font-weight:$font-weight-bold;
+            &:last-child {
+                border-right:2px solid #1C58B1;
             }
         }
     }
@@ -181,4 +176,17 @@
 #mobile-menu a {
     color:$white;
     text-decoration:none;
+}
+.dropdown {
+    border:none;
+    height:auto;
+}
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+    color:$white;
+}
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+    border-color:$white transparent transparent;
+}
+.dropdown.menu > li.opens-right > .is-dropdown-submenu {
+    z-index:100;
 }

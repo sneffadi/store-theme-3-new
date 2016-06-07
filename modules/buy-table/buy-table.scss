@@ -191,7 +191,8 @@
 }
 
 /* Dropdown in banner */
-.dropdown {
+.dropdown-buy {
+    .dropdown {
     font-family: $font-family-sans-serif-heading;
     background-color: #f5f5f5;
     border: 2px solid #eee;
@@ -252,6 +253,8 @@
         color: $oil;
     }
 }
+}
+
 
 .dropdown-buy {
     margin-bottom: rem-calc(30) !important;

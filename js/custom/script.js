@@ -42,6 +42,7 @@ $(document).ready(function() {
         if(prodCount>1) $('.free-shipping').hide();
         else $('.free-shipping').show();
     });
+    
 });
 
 $(document).ready(function() {
@@ -118,3 +119,4 @@ loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure"
 olark.configure('box.corner_position', 'BL');
 olark.identify('8146-171-10-5400');
 /*]]>*/
+

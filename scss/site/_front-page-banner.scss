@@ -1,21 +1,20 @@
 #hero {
     h1 {
         font-size: rem-calc(35);
-        span.blue {
-            color:$astronaut-blue;
+        padding-top:rem-calc(30);
+        span {
+            color:$primary-color;
         }
         @media #{$small-only} {
             font-size:rem-calc(32);
             line-height:1;
         }
     }
-
-    #banner {
-        background: url(#{$imgPath}/banner.png) no-repeat;
-        width: 100%;
-        height: rem-calc(183);
-        padding: rem-calc(20) rem-calc(25);
-        margin-bottom: rem-calc(30);
+    .button {
+        font-size:rem-calc(24);
+        @media #{$small-only} {
+            font-size:rem-calc(19);
+        }
     }
 
     counter-reset: section;
@@ -75,5 +74,11 @@
                 margin-bottom: rem-calc(14);
             }
         }
+    }
+    .front-guarantee {
+        background:$guarantee-banner;
+        padding-top:rem-calc(16);
+        padding-bottom:rem-calc(16);
+        border-radius:rem-calc(10);
     }
 }
