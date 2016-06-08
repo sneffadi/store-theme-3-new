@@ -815,6 +815,11 @@
 		.row {
 			margin:0 auto;
 		}
+		#suppfactsModal {
+			@media #{$small-only} {
+				margin-top:rem-calc(35);
+			}
+		}
 		.bonus-bg {
 			background: $guarantee-bg;
 		}
