@@ -8,7 +8,7 @@
  */
 get_header(); ?>
 
-<div class="row collapse">
+<div class="row collapse prod-row-wrap">
 
     <div id="content" role="main">
 

@@ -171,7 +171,7 @@ function buy_table_cb() {
 
         $cf_value = get_post_meta($post->ID);
         $showCustom= (isset($cf_value['cf_custom_banner']))&&($cf_value['cf_custom_banner'][0]==='yes');
-        echo "<div class=\"row collapse\">";
+        echo "<div class=\"row collapse buy-row-wrap\">";
         echo "<div id=\"buytable\" data-magellan-destination=\"buytable\"> <a name=\"buytable\"></a>";
 		
         $count = 1;
