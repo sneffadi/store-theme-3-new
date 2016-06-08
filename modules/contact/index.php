@@ -31,7 +31,7 @@ function alcf_malicious_input($input) {
  * check for spam
  */
 function alcf_spam_question($input) {
-	$response = '2';
+	$response = '8';
 	$response = stripslashes(trim($response));
 	return ($input == $response);
 }
@@ -67,12 +67,12 @@ function alcf_input_filter() {
 	if (empty($_POST['alcf_response'])) {
 		$pass = FALSE; 
 		$fail = 'empty';
-		$alcf_strings['response'] = '<input class="alcf_contactform_error" name="alcf_response" id="alcf_response" type="text" size="33" maxlength="99" value="'. htmlentities($_POST['alcf_response']) .'" placeholder="1 + 1 =" />';
+		$alcf_strings['response'] = '<input class="alcf_contactform_error" name="alcf_response" id="alcf_response" type="text" size="33" maxlength="99" value="'. htmlentities($_POST['alcf_response']) .'" placeholder="Prove you\'re not a robot, what\'s 3 + 5 =" />';
 	}
 	if (!alcf_spam_question($_POST['alcf_response'])) {
 		$pass = FALSE;
 		$fail = 'wrong';
-		$alcf_strings['response'] = '<input class="alcf_contactform_error" name="alcf_response" id="alcf_response" type="text" size="33" maxlength="99" value="'. htmlentities($_POST['alcf_response']) .'" placeholder="1 + 1 =" />';
+		$alcf_strings['response'] = '<input class="alcf_contactform_error" name="alcf_response" id="alcf_response" type="text" size="33" maxlength="99" value="'. htmlentities($_POST['alcf_response']) .'" placeholder="Prove you\'re not a robot, what\'s 3 + 5 =" />';
 	}
 	if(empty($_POST['alcf_message'])) {
 		$pass = FALSE; 
@@ -94,7 +94,7 @@ function alcf_input_filter() {
 		
 			$alcf_strings['error'] = '<p class="alcf-error">Please complete the required fields.</p>';
 		} elseif($fail == 'wrong') {
-			$alcf_strings['error'] = '<p class="alcf-error">Oops. Incorrect answer for the security question. Please try again.<br />Hint: 1 + 1 = 2</p>';
+			$alcf_strings['error'] = '<p class="alcf-error">Oops. Incorrect answer for the security question. Please try again.<br />Hint: 3 + 5 = 8</p>';
 		}
 		return false;
 	}
@@ -183,7 +183,7 @@ function alcf_display_contact_form() {
 	global $alcf_strings;
 
 	$captcha_box = '<fieldset class="alcf-response">
-					<label for="alcf_response"> 1 + 1 = </label>
+					<label for="alcf_response"> Prove you\'re not a robot, what\'s 3 + 5? </label>
 					'. $alcf_strings['response'] .'
 				</fieldset>';
 	$alcf_form = ($alcf_strings['error'] . '

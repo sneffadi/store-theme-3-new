@@ -99,6 +99,21 @@ $(document).ready(function() {
         }
     })
 }(jQuery, this);
+var windowSize = $(window).width();
+$(window).load(function() {
+
+    if (windowSize < 640) {
+        $(window).scroll(function(){
+           if( $(document).scrollTop() > 400 ) {
+              $('.bottom-button').show();
+           } else {
+              $('.bottom-button').hide();
+           }
+        });
+    }
+});
+
+
 /*<![CDATA[*/
 window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
 f[z]=function(){

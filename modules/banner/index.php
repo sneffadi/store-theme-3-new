@@ -97,8 +97,8 @@ function product_banner_callback($post) {
                 <textarea type="text" name="test-tab"><?php if ( isset ( $cf_value['test-tab'] ) ) echo $cf_value['test-tab'][0]; ?></textarea>
             </p>
             <p>
-                <label for="faq-tab">FAQ Tab (include p tags)</label>
-                <textarea type="text" name="faq-tab"><?php if ( isset ( $cf_value['faq-tab'] ) ) echo $cf_value['faq-tab'][0]; ?></textarea>
+                <label for="guar-tab">Guarantee Tab (include p tags)</label>
+                <textarea type="text" name="guar-tab"><?php if ( isset ( $cf_value['guar-tab'] ) ) echo $cf_value['guar-tab'][0]; ?></textarea>
             </p>
         </div>
     </div>
@@ -166,9 +166,9 @@ function product_banner_save($post_id) {
     if((isset($_POST['test-tab']))&&($_POST['test-tab']!='')) {
         update_post_meta($post->ID, 'test-tab', $_POST['test-tab']);
     } else delete_post_meta($post->ID, 'test-tab');
-    if((isset($_POST['faq-tab']))&&($_POST['faq-tab']!='')) {
-        update_post_meta($post->ID, 'faq-tab', $_POST['faq-tab']);
-    } else delete_post_meta($post->ID, 'faq-tab');
+    if((isset($_POST['guar-tab']))&&($_POST['guar-tab']!='')) {
+        update_post_meta($post->ID, 'guar-tab', $_POST['guar-tab']);
+    } else delete_post_meta($post->ID, 'guar-tab');
 
     $cf_value = get_post_meta($post_id);
     $i = 1;
@@ -311,7 +311,174 @@ function render_custom_product_banner() {
                 </div><!--/ criterion-row row -->
             </div>
         </div>
-        
+        <div class="ratings-box">
+            <div class="small-24 columns table">
+                <div class="criterion-row row">
+                    <div class="small-8 columns criterion">
+                        <div class="rating-type">
+                            Overall Rating:
+                        </div>
+                        <?php $thisRating= get_post_meta($postId, 'ratings-overall-value', TRUE);
+                        if($thisRating==='') {
+                            $thisRating= get_post_meta($id, 'ratings-overall-value', TRUE);
+                            if($thisRating==='') $thisRating= 0;
+                        }
+                        $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div>
+                    </div>
+                    <div class="small-8 columns criterion">
+                        <div class="rating-type">
+                            <?php $value= get_post_meta($id, "ratings-ingredient-quality", true);
+                            if(($value===FALSE)||($value==='')) $value= 0; ?>
+                                Ingredient Quality:
+                        </div>
+                            <?php $thisRating= get_post_meta($postId, 'ratings-ingredient-quality', TRUE);                            
+                            if($thisRating==='') {
+                                $thisRating= get_post_meta($id, 'ratings-ingredient-quality', TRUE);
+                                if($thisRating==='') $thisRating= 0;
+                            }
+                            $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div>
+                    </div>
+                    <div class="small-8 columns criterion">
+                        <div class="rating-type">
+                            <?php $value= get_post_meta($id, "ratings-effectiveness", true);
+                            if(($value===FALSE)||($value==='')) $value= 0; ?>
+                                Enlargement Power:
+                        </div>
+                            <?php $thisRating= get_post_meta($postId, 'ratings-effectiveness', TRUE);
+                            if($thisRating==='') {
+                                $thisRating= get_post_meta($id, 'ratings-effectiveness', TRUE);
+                                if($thisRating==='') $thisRating= 0;
+                            }
+                            $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div>
+                    </div> 
+                </div><!--/ criterion-row row -->
+                <div class="criterion-row row">
+                    <div class="small-8 columns criterion">
+                        <?php $value= get_post_meta($id, "ratings-long-term-results", true);
+                        if(($value===FALSE)||($value==='')) $value= 0; ?>
+                        <div class="rating-type">
+                            Long-Term Results:
+                        </div>
+                        <?php $thisRating= get_post_meta($postId, 'ratings-long-term-results', TRUE);
+                        if($thisRating==='') {
+                            $thisRating= get_post_meta($id, 'ratings-long-term-results', TRUE);
+                            if($thisRating==='') $thisRating= 0;
+                        }
+                        $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div><!-- /.star-col -->
+                    </div>
+                    <div class="small-8 columns criterion">
+                        <div class="rating-type">
+                            <?php $value= get_post_meta($id, "ratings-customer-reviews", true);
+                            if(($value===FALSE)||($value==='')) $value= 0; ?>
+                                Customer Reviews:
+                        </div>
+                            <?php $thisRating= get_post_meta($postId, 'ratings-customer-reviews', TRUE);
+                            if($thisRating==='') {
+                                $thisRating= get_post_meta($id, 'ratings-customer-reviews', TRUE);
+                                if($thisRating==='') $thisRating= 0;
+                            }
+                            $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div><!--/ .star-col -->
+                    </div>
+                    <div class="small-8 columns criterion">
+                        <div class="rating-type">
+                            <?php $value= get_post_meta($id, "ratings-product-safety", true);
+                            if(($value===FALSE)||($value==='')) $value= 0; ?>
+                                Product Safety:
+                        </div>
+                            <?php $thisRating= get_post_meta($postId, 'ratings-product-safety', TRUE);
+                            if($thisRating==='') {
+                                $thisRating= get_post_meta($id, 'ratings-product-safety', TRUE);
+                                if($thisRating==='') $thisRating= 0;
+                            }
+                            $thisRating= number_format(floatval($thisRating), 1); ?>
+                        <div class="star-col">
+                            <div class="star-positioner">
+                                <div class="stars">
+                                    <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
+                                    <div class="star_holder">
+                                        <div class="star star-1"></div> <!-- / .star -->
+                                        <div class="star star-2"></div> <!-- / .star -->
+                                        <div class="star star-3"></div> <!-- / .star -->
+                                        <div class="star star-4"></div> <!-- / .star -->
+                                        <div class="star star-5"></div> <!-- / .star -->
+                                    </div> <!-- / .star_holder -->
+                                </div> <!-- / .stars -->
+                            </div> <!-- / .star-positioner -->
+                        </div>
+                    </div>
+                </div><!--/ criterion-row row -->
+            </div>
+        </div>
         <?php $bannerSubheader= isset($cf_value['cf_banner_subheader']) ? $cf_value['cf_banner_subheader'][0] : '';
         if(($bannerSubheader!==FALSE)&&($bannerSubheader!=='')):
             ?>
@@ -337,6 +504,14 @@ function render_custom_product_banner() {
             document.getElementById('price').innerHTML = (value * new_qty).toFixed(2);
             return new_qty;
         }
+        $(".custom-product-banner .productMeta .prod-title .criterion-row").hover(
+            function () {
+                $(".productMeta .ratings-box").show();
+            },
+            function () {
+                $(".productMeta .ratings-box").hide();
+            }
+        );
         </script>
         <form class="addProductForm" action="<?php echo do_shortcode('[cart_url]');?>" method="GET">
             <div class="priceWrap">
@@ -358,7 +533,7 @@ function render_custom_product_banner() {
     $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon1';
     $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon2';
     $test= isset($cf_value['test-tab']) ? $cf_value['test-tab'][0] : 'Coming Soon3';
-    $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon4';
+    $faq= isset($cf_value['guar-tab']) ? $cf_value['guar-tab'][0] : 'Coming Soon4';
     if ($showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes')) { ?>
         <div class="row tabs-section">
             <div class="small-24 column">
@@ -369,7 +544,7 @@ function render_custom_product_banner() {
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
                               <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Ingredients</a></li> <?php } ?>
                               <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Reviews</a></li> <?php } ?>
-                              <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#faq-panel">FAQ</a></li> <?php } ?>
+                              <?php if((isset($cf_value['guar-tab']))&&($cf_value['guar-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#guar-panel">Guarantee</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                
                     </div> <!-- / .row --> 
@@ -396,7 +571,7 @@ function render_custom_product_banner() {
                             </div> <!-- / .small-24 columns -->
                         </div> <!-- / .row -->
                     </div> <?php } ?>
-                    <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?> tabs-panel" id="faq-panel">
+                    <?php if((isset($cf_value['guar-tab']))&&($cf_value['guar-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?> tabs-panel" id="guar-panel">
                         <div class="row small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($faq); ?> 

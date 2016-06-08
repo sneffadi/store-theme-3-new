@@ -163,6 +163,9 @@
     .button.secondary {
         margin: 0 rem-calc(7.5) 0 0;
         width: 100%;
+        &:hover {
+            color:$white;
+        }
     }
 
     .button.success.review-button {

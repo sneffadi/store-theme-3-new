@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying archive pages
  *
@@ -17,116 +18,143 @@
  */
 
 get_header(); ?>
-<div class="row"><!-- Row for main content area -->
+
+<div class="row archive-page border">
+<!-- Row for main content area -->
     <div class="small-24 medium-24 columns" role="main">
- <?php
-$the_key = 'ratings-overall-value';  // The meta key to sort on
-$args = array(
-   'meta_key' => $the_key,
-   'orderby' => 'meta_value'
-);
-global $wp_query;
-query_posts(
-    array_merge(
-        $wp_query->query,
-        $args
-    )
-);
-?>   
-<?php $productCount = 1; ?>
-<?php if(have_posts()):
-    $options= get_option('theme_options');
-    $num= !empty($options['ratings']) ? $options['ratings'] : "100";
-    echo "<h4>All Products</h4>";
-    echo "<div id=\"product_list\">";
 
-    while(have_posts()):
-        the_post(); ?>
+    <?php
+if (have_posts()): ?>
         <?php
-            if(($productCount % 3) == 1){
-                echo "<div class=\"row collapse\">";
-            }
+    $options = get_option('theme_options');
+    $num = !empty($options['ratings']) ? $options['ratings'] : "5";
+    echo "<h1>All Products</h1>";
+    echo "<div id=\"product_list\">"; ?>
+        <?php
+        global $wp_query;
+        $args = array_merge( $wp_query->query_vars, array(
+            'posts_per_page' => '25',
+            'order' => 'DESC',
+            'orderby' => 'meta_value_num title',
+            'cat' => '-7',
+            'meta_query' => array(
+                    array(
+                        'key' => 'ratings-overall-value',
+                    )
+                )
+            )
+        );
+        query_posts( $args );
         ?>
+        <?php
+            $i = 1;
+            while (have_posts()):
+                the_post();
+                global $post;
+                $id = $post->ID;
+                $image = get_the_post_thumbnail($id, 'medium');
+                $link = get_permalink($id);
+                $end = '';
+                if ($i == sizeof($posts)) { $end = " end"; }
 
-        <div class="small-24 medium-8 columns small-text-center product_listing">
-        <?php echo "<a href=\"" . get_permalink($post->ID)."\" class=\"product_name\">";
-        echo $post->post_title;
-        echo "<figure>";
-        echo "<a href=\"" . get_the_permalink($post->ID) . "\">";
-        echo get_the_post_thumbnail($post->ID);
-        echo "</a>";
-        echo "</figure>";
-        echo "</a>";
-        $starsWidth= get_post_meta($post->ID, 'ratings-overall-value', true)*20;?>
-            <div class="star-positioner">
-                <div class="stars">
-                    <div class="colorbar" style="width:<?php echo $starsWidth;?>%"></div>
-                    <div class="star_holder">
-                        <div class="star star-1"></div> <!-- / .star -->
-                        <div class="star star-2"></div> <!-- / .star -->
-                        <div class="star star-3"></div> <!-- / .star -->
-                        <div class="star star-4"></div> <!-- / .star -->
-                        <div class="star star-5"></div> <!-- / .star -->
-                   </div> <!-- / .star_holder -->
-                </div> <!-- / .stars -->
-            </div> <!-- / .star-positioner -->
-        <?php echo number_format(get_post_meta($post->ID, "ratings-overall-value", true), 1)."/".$num;
-        $cf_value= get_post_meta($post->ID);
-        $showCustom= (isset($cf_value['cf_custom_banner']))&&($cf_value['cf_custom_banner'][0]==='yes');
-        if($showCustom) $retail= get_post_meta($post->ID, "cf_retail_price", true);
-        else $retail= get_post_meta($post->ID, "retail_c1", true); ?>
-            <div class="msrp">
-                Retail: <?php echo "$".number_format($retail, 2);?>
-            </div>
-            <div class="our-price">Our Price:
-        <?php if($showCustom) $price= get_post_meta($post->ID, "cf_store_price_one", true);
-        else {
-            $pricing = array();
-            $qty= get_post_meta($post->ID, "qty_c1", true);
-            if(($qty===FALSE)||($qty==='')) $qty= 1;
-            $p1 = (get_post_meta($post->ID, "price_c1", true)/$qty);
-            $qty= get_post_meta($post->ID, "qty_c2", true);
-            if(($qty===FALSE)||($qty==='')) $qty= 1;
-            $p2 = (get_post_meta($post->ID, "price_c2", true)/$qty);
-            $qty= get_post_meta($post->ID, "qty_c3", true);
-            if(($qty===FALSE)||($qty==='')) $qty= 1;
-            $p3 = (get_post_meta($post->ID, "price_c3", true)/$qty);
-            array_push($pricing, $p1, $p2, $p3);
-            $low = min($pricing);
-            $high = max($pricing);
-            $epsilon = 0.00001;
-            if ($low == 0) {
-                    $price = number_format($high, 2);
+                if ( $i % 3  == 0) {
+                    $colCount = 'three';
+                } elseif ( $i % 3  == 1)  {
+                    $colCount = 'one';
+                } elseif ( $i % 3 == 2 ) {
+                    $colCount = 'two';
+                }
+
+                if ($i < 4) {
+                    $topRow = 'top-row';
                 }
                 else {
-                  $price= number_format($low, 2);
-                if(abs($low-$high)>=$epsilon) $price.= '-'.number_format($high, 2);  
+                    $topRow = '';
                 }
-        } ?>
-                <a href="<?php echo get_the_permalink($post->ID);?>">$<?php echo $price;?></a>
-            </div>
-        </div><!-- /. small-24 medium-6 columns -->
+
+                if ($colCount == 'one') {
+                    echo "<div class=\"row collapse bb\">";
+                }
+
+?>
+
+                <div class="small-24 medium-8 columns<?php echo $end; ?>">
+
+                    <div class="product-item <?php echo $colCount ?> <?php echo $topRow ?>" >
+                    <?php
+                        echo "<div class=\"product-name\">";
+                        echo "<a href=\"" . get_permalink($post->ID) . "\">";
+                        echo $post->post_title;
+                        echo "</a>";
+                        echo "</div>";
+                        echo "<figure>";
+                        echo "<a href=\"" . $link . "\">";
+                        echo $image;
+                        echo "</a>";
+                        echo "</figure>";
+                    ?>
+                    <div class="ratings-container">
+                        <div class="star-positioner">
+                            <div class="stars">
+                                <div class="colorbar" style="width:<?php echo get_post_meta($id, 'ratings-overall-value', true) * 20; ?>%">
+                                </div> <!-- / .colorbar -->
+                                <div class="star_holder">
+                                    <div class="star star-1"></div> <!-- / .star -->
+                                    <div class="star star-2"></div> <!-- / .star -->
+                                    <div class="star star-3"></div> <!-- / .star -->
+                                    <div class="star star-4"></div> <!-- / .star -->
+                                    <div class="star star-5"></div> <!-- / .star -->
+                                </div> <!-- / .star_holder -->
+                            </div> <!-- / .stars -->
+                        </div> <!-- / .star-positioner -->
+                        <?php echo "<div class=\"rating\">" . number_format(get_post_meta($id, "ratings-overall-value", true), 1) . "/" . $num . "</div>"; ?>
+                    </div> <!-- / .ratings-container -->
+                    <?php if(get_post_meta($id, "cf_custom_banner", true)==='yes') {
+                        $pricing= get_post_meta($id, "cf_retail_price", true);
+                    } else {
+                        $pricing= get_post_meta($id, "retail_c1", true);
+                    } ?>
+                    <div class="msrp">
+                        Retail: $<?php echo number_format($pricing, 2); ?>
+                    </div>
+                    <?php if(get_post_meta($id, "cf_custom_banner", true)==='yes') {
+                        $pricing= get_post_meta($id, "cf_store_price", true);
+                    } else {
+                        $pricing= get_post_meta($id, "price_c1", true);
+                    } ?>
+                    <div class="our-price">
+                        Our Price: <a href="<?php echo $link;?>">$<?php echo number_format($pricing, 2);?></a>
+                    </div>
+                    <div class="row">
+                        <div class="small-24 columns">
+                            <a href="<?php echo $link; ?>" class="button success tiny radius">Read More</a>
+                        </div> <!-- / .small-24 -->
+                    </div> <!-- / .row -->
+                </div> <!-- / .product-item -->
+
+            </div><!-- /. small-24 medium-6 columns -->
+            <?php
+            if ( $colCount == 'three' ) {
+                    echo "</div><!--/.row-->";
+                }
+            ?>
         <?php
-            if(($productCount % 3) == 0){
-                echo "</div><!--/end row-->";
-            }
-        ?>
-        <?php $productCount++; ?>
-    <?php endwhile; ?>
+        $i++;
+    endwhile; ?>
+
+
+        <?php
+    echo "</div>"; ?>
+
+        <?php
+else: ?>
+            <?php
+    get_template_part('content', 'none'); ?>
+    <?php
+endif;
+ // End have_posts() check.
+ ?>
     </div>
-<?php else:
-    get_template_part('content', 'none');
-endif; // End have_posts() check.
-/* Display navigation to next/previous pages when applicable */ ?>
-<?php if(function_exists('foundationpress_pagination')):
-    foundationpress_pagination();
-elseif(is_paged()):
-    ?>
-        <nav id="post-nav">
-            <div class="post-previous"><?php next_posts_link(__('&larr; Older posts', 'foundationpress'));?></div>
-            <div class="post-next"><?php previous_posts_link(__('Newer posts &rarr;', 'foundationpress'));?></div>
-        </nav>
-<?php endif; ?>
-    </div>
-</div> <!--What is this for?-->
-<?php get_footer(); ?>
+</div>
+<?php
+get_footer(); ?>

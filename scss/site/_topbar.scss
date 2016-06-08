@@ -180,6 +180,35 @@
 .dropdown {
     border:none;
     height:auto;
+    ul {
+        li {
+            border-bottom:1px solid $white;
+            padding-bottom:rem-calc(8);
+            &:after {
+                display:block;
+                content:'';
+                clear:both;
+            }
+            h4 {
+                float:left;
+                padding-top:rem-calc(15);
+                text-align:center;
+            }
+            img {
+                float:left;
+                width:rem-calc(33);
+                margin-right:rem-calc(15);
+            }
+            .nav-rating {
+                text-align:right;
+                padding-top:rem-calc(15);
+            }
+            &.all-prods-nav {
+                padding-top:rem-calc(10);
+                border-bottom:none;
+            }
+        }
+    }
 }
 .top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
     color:$white;

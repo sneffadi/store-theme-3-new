@@ -1,6 +1,6 @@
 
 .productMeta {
-	
+	position:relative;
 	button {
 		text-transform: none;
 		font-size:rem-calc(30);
@@ -11,6 +11,24 @@
 			content:'';
 		}
 	}
+    .ratings-box {
+        background:$guarantee-banner;
+        width:100%;
+        box-sizing:border-box;
+        padding:rem-calc(20) 0;
+        position:absolute;
+        top:rem-calc(54);
+        left:0;
+        display:none;
+        &:after {
+            display:block;
+            content:'';
+            clear:both;
+        }
+        .rating-type {
+            font-size:rem-calc(15);
+        }
+    }
 }
 .custom-product-banner {
     border-bottom:none;
@@ -101,6 +119,7 @@
 			margin-bottom:rem-calc(30);
 			width:rem-calc(200);
 			border-radius:rem-calc(3);
+            font-size:rem-calc(20);
 			@media #{$medium-up} {
 				width:rem-calc(140);
 			}

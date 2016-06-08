@@ -1,0 +1,94 @@
+/* Styles for All Products Page */
+.post-type-archive-products {
+    .archive-page {
+        padding: rem-calc(30) 0;
+
+        h1 {
+            text-align: center;
+        }
+
+        .bl {
+            border-left: 1px solid $gainsboro;
+        }
+
+        .br {
+            border-right: 1px solid $gainsboro;
+        }
+
+        .bb {
+            border-bottom: 1px solid $gainsboro;
+        }
+
+        .bt {
+            border-top: 1px solid $gainsboro;
+        }
+
+        #product_list {
+            text-align: center;
+            .columns {
+                a {
+                    
+                }
+            }
+        }
+
+        .product-item {
+            padding: rem-calc(16);
+        }
+
+        .product-item.top-row {}
+
+        .product-item.one, .product-item.two {
+            border-right: 1px solid $gainsboro;
+        }
+
+        .product-item {
+            .product-name {
+                font-size: rem-calc(18);
+                font-weight: 900;
+
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            .our-price {
+                margin: 0 0 rem-calc(10) 0;
+            }
+
+
+        }
+
+        figure {
+            height: rem-calc(112);
+            padding: rem-calc(16) 0;
+
+            img {
+                width: auto;
+                max-height: 100%;
+                display: inline-block;
+                margin: 0 auto;
+            }
+        }
+
+        .star-positioner {
+            .stars {
+                background: $rating-bg-color;
+
+                .star_holder {
+                    .star {
+                        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA9CAYAAAAeYmHpAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAADHUlEQVRo3uWb73naMBDG3+vTAdwN6ARxJyidoGQDugEjpBOQTIAzQbIBZIKYCaATwAZvP1gGPwTQP+sE4f1iEtvS/XQnnXUYIUncmL7kNuCWoLcA7m8N+klEXgGsbwm6Mse/twJdicjafH5FE+qfHvq5/SAiWwBP2gaIcsqqReRH9x8kBwBWmtDanv7gVRPqlaYRmp7eisi3YydIDgHMtaA1PX1y7orIAkD9GaEry3m1BU0rvCsR+WO7iOQGQJHaGC1PPztep+JtDU8vROSXy4Va6UvD065eVktfqT29FpHvPjdopK/Unnb2ciuTvhbXDP0YeJ/3YF0KdGU2FN4SkQoJ99opoWPTTzJvf+2pnS32j5E1gH8iUge21erRHO+wf2AZ9mGsbfVedKCWHagtsFt01EWyAFCaP8vOoPw0x+75o9AvAN7Q8VToXLxEkewOyhDAb5DckBzlNk5pAKYkCe41zm1UYuBZC9qFJslpbuMSwBYk37uQh9AkOcttaI/Ag0PgU9AkOTcr5NWKZGnWK7pC04zQVYKTHJ4CtkHT3FjmhvAEHluYrNBXBU7ywYHHCbrVODeUBXjmCuIDTZKT3HBHYAuSLz4QvtDkBaU0HsnBqaBpRrbIDFySXIUYHwpNZkxpPJODU0O34KUysDUl2RRbOSmh8I3Ege5iG+ijXFQrQy9jG4iFzlFwWGSHVgZuvwVZ54R+04Y2qnNCR3UeoajBjoHe9lDmDVVUvzHQuYCjS88x0Lnmc6tg8Bjo4E57Uq0OHRpibHZGD2w2C6MI6PBIC33mDuxrxI87ozmb1y582xqEPnuHQnvVx42Bc1ub9Ny1MXBrGRreTs+/NKGM5uWZoeXyCYAV/cpSdZD1gZ4eOLQ7Zvied06HLSvJSUjjIdAbiyEl7aHsqinPhDyb+rYK9MsJAwpjZN/a8ExBMqTBkDm9PNLxGM28nfg25qACwJRNlWZ45PzCt8EQ6F0nJrzeAcyQvoJSApizqW93+/LP197zAbtQniUIZe+QZ5P7k4Z3bTpbARgn9uw5FWhCPug9Uu3fcFyEbvJnh/8BLKkYWB0pa80AAAAASUVORK5CYII=");
+                    }
+                }
+            }
+        }
+        .button.radius {
+                margin: 0 auto;
+                font-size:rem-calc(20);
+                color:$white!important;
+                @media #{$medium-up} {
+                    width:rem-calc(200);
+                }
+            }
+    }
+}

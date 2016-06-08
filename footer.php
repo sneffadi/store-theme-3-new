@@ -48,10 +48,18 @@
             <p id="testimonial-disclaimer">*Individual Results May Vary. Results in testimonials are atypical and results will vary on individual circumstances. We recommend all products with a healthy diet & exercise.</p>
 			<ul class="footer-bar">
 				<li>&copy; 2013-<?php echo date('Y');?>, <?php echo get_bloginfo('name'); ?></li>
-				 <li><a href="<?php echo site_url();?>/privacy.php" data-reveal-id="docsModal" data-reveal-ajax="true">Privacy Policy</a></li>
-				 <li><a href="<?php echo site_url();?>/terms.php" data-reveal-id="docsModal" data-reveal-ajax="true">Terms and Conditions</a></li>
-				 <li><a href="<?php echo site_url();?>/testimonial-disclaimer.html" data-reveal-id="docsModal" data-reveal-ajax="true">Testimonial Disclaimer</a></li>
+				 
+					
+				<li><a data-open="privacyModal">Privacy Policy</a></li>
+				<li><a data-open="termsModal">Terms and Conditions</a></li>
+				<li><a data-open="testModal">Testimonial Disclaimer</a></li>
 			</ul>
+			<div class="reveal" id="privacyModal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">  
+			</div>
+			<div class="reveal" id="termsModal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">  
+			</div>
+			<div class="reveal" id="testModal" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">  
+			</div
 		</div> <!-- / .small-12 -->
 	</div> <!-- / .row -->
 	<div id="docsModal" class="reveal-modal medium" data-reveal>Garbage</div><!-- / #docsModal keep empty -->
@@ -67,6 +75,30 @@
 <?php endif; ?>
 <?php wp_footer(); ?>
 <?php do_action( 'foundationpress_before_closing_body' ); ?>
+<script>
+	jQuery(document).ready(function($) {
+		var $modal1 = $('#privacyModal');
 
+		$.ajax('<?php echo site_url();?>/privacy.html')
+		  .done(function(resp){
+		    $modal1.html(resp);
+		});
+
+		var $modal2 = $('#termsModal');
+
+		$.ajax('<?php echo site_url();?>/terms.html')
+		  .done(function(resp){
+		    $modal2.html(resp);
+		});
+
+		 var $modal3 = $('#testModal');
+
+		$.ajax('<?php echo site_url();?>/testimonial-disclaimer.html')
+		  .done(function(resp){
+		    $modal3.html(resp);
+		});
+	});
+	
+</script>
 </body>
 </html>

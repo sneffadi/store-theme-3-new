@@ -1,5 +1,7 @@
 <?php
 add_action('page_after_entry_content', 'top_products_cb');
+add_action('after_product_content', 'bottom_button_cb');
+add_action('after_page_content', 'bottom_button_cb');
 
 /*=============================================
 this function builds the top x list on pages and
@@ -63,7 +65,7 @@ function top_products_cb() {
                                                 if($thisRating==='') $thisRating= 0;
                                             }
                                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                            <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -90,7 +92,7 @@ function top_products_cb() {
                                                     if($thisRating==='') $thisRating= 0;
                                                 }
                                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                            <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -117,7 +119,7 @@ function top_products_cb() {
                                                     if($thisRating==='') $thisRating= 0;
                                                 }
                                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                            <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -146,7 +148,7 @@ function top_products_cb() {
                                                 if($thisRating==='') $thisRating= 0;
                                             }
                                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                            <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -173,7 +175,7 @@ function top_products_cb() {
                                                     if($thisRating==='') $thisRating= 0;
                                                 }
                                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                           <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -200,7 +202,7 @@ function top_products_cb() {
                                                     if($thisRating==='') $thisRating= 0;
                                                 }
                                                 $thisRating= number_format(floatval($thisRating), 1); ?>
-                                            <div class="star-col">
+                                            <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                                                 <div class="star-positioner">
                                                     <div class="stars">
                                                         <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -307,16 +309,30 @@ function top_products_cb() {
                     </div>
                     <h4><?php
                         if (isset($subhead) && $subhead !== '') {
-                                echo "{$subhead}";
+                                echo do_shortcode("{$subhead}");
                             }
                      ?></h4>
                      <?php $guarantee = get_post_meta($id, 'ratings-guarantee', true);
                         if (isset($guarantee) && $guarantee !== '') { ?>
                             <div class="row guarantee-row collapse">
                                 <div class="small-24 columns">
-                                    <i class="fa fa-certificate" aria-hidden="true"></i> <?php echo get_post_meta($id, "ratings-guarantee", true); ?> <a href="">Details</a>
+                                    <i class="fa fa-certificate" aria-hidden="true"></i> <?php echo get_post_meta($id, "ratings-guarantee", true); ?> <a data-open="guaranteeModal">Details</a>
                                 </div>
                              </div>
+                             <div class="large reveal" id="guaranteeModal" data-reveal>
+                                <div class="row front-guarantee">
+                                    <div class="small-7 columns">
+                                        <img src="<?php echo do_shortcode('[upload_dir]')?>guarantee.png">
+                                    </div> <!-- / .small-8 columns -->
+                                    <div class="small-17 columns">
+                                        <h2>90-Day, 100% Money Back Guarantee</h2>
+                                        <p>We're so confident you'll love any product on the top 10 list below, we personally back each one with a money back guarantee. If you don't absolutely love the product, return it within 90 days for a FULL REFUND of the purchase price. Keep reading to discover our top 10 selling <?php echo $niche ?>s of <?php echo $year; ?>...</p>
+                                    </div> <!-- / .small-16 columns -->
+                                </div> <!-- / .row -->
+                                <button class="close-button" data-close aria-label="Close modal" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         <?php    } ?>
                      
                      <div class="content-wrap">
@@ -349,3 +365,22 @@ function top_products_cb() {
     </div><!--/.row collapse-->
 </div><!--/.row upsell collapse top-rated-list -->
 <?php } // end top_products_cb
+function bottom_button_cb() {
+    global $post;
+        $options = get_option('theme_options');
+        $num = !empty($options['ratings']) ? $options['ratings'] : "100";
+        $post_type = get_post_type();
+        $topIds = explode(",", get_post_meta(get_the_ID(), "top-products-list", true));
+        if ($topIds[0] == "") {
+            $topIds = explode(",", get_post_meta(get_option('page_on_front'), "top-products-list", true));
+        }
+        $recId = in_category('recommended') ? $post->ID : $topIds[0];
+        $link = get_the_permalink($recId);
+        $cta = "See " . do_shortcode("[year]") . " Editor's Choice";
+        $recommended = in_category("recommended");
+        if (!$recommended) {
+    ?>
+
+        <a href="<?php echo $link; ?>" class="button success gradient bottom-button hide-for-medium"><?php echo $cta; ?> &raquo;</a>
+    <?php }
+} // end function
