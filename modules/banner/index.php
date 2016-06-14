@@ -15,7 +15,7 @@ function product_banner_meta() {
 add_action('add_meta_boxes', 'product_banner_meta');
 
 function product_banner_callback($post) {
-	wp_nonce_field(basename(__FILE__), 'product_nonce');
+    wp_nonce_field(basename(__FILE__), 'product_nonce');
     $cf_value= get_post_meta($post->ID); ?>
 <style>
     label {
@@ -29,7 +29,7 @@ function product_banner_callback($post) {
     #banner_meta input[type="text"] {
         width: 75%;
     }
-    #banner_meta .custom-product-tabs textarea {
+    #banner_meta .custom-product-tabs textarea, .custom-product-banner textarea {
         width:80%;
         min-height:200px;
     }
