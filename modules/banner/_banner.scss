@@ -235,4 +235,12 @@
     		padding-right:0;
     	}
     }
+    .ingredients {
+        .show-for-medium {
+            img {
+                max-height:rem-calc(355);
+                float:right;
+            }
+        }
+    }
 }
