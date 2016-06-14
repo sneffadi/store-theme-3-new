@@ -316,7 +316,12 @@ function top_products_cb() {
                         if (isset($guarantee) && $guarantee !== '') { ?>
                             <div class="row guarantee-row collapse">
                                 <div class="small-24 columns">
-                                    <i class="fa fa-certificate" aria-hidden="true"></i> <?php echo get_post_meta($id, "ratings-guarantee", true); ?> <a data-open="guaranteeModal">Details</a>
+                                    <?php if (strtolower(get_post_meta($id, "ratings-guarantee", true)) == "none" || "") { ?>
+                                            Guarantee: None
+                                        <?php } else { ?>
+                                            <i class="fa fa-certificate" aria-hidden="true"></i> <?php echo get_post_meta($id, "ratings-guarantee", true); ?> <a data-open="guaranteeModal">Details</a>
+                                       <?php } ?>
+                                    
                                 </div>
                              </div>
                              <div class="large reveal" id="guaranteeModal" data-reveal>
