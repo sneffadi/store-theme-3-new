@@ -551,7 +551,7 @@ function render_custom_product_banner() {
                             <ul class="tabs" data-tabs id="custom-tabs">
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
                               <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Ingredients</a></li> <?php } ?>
-                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Reviews</a></li> <?php } ?>
+                              <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Testimonials</a></li> <?php } ?>
                               <?php if((isset($cf_value['guar-tab']))&&($cf_value['guar-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#guar-panel">Guarantee</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                

@@ -173,7 +173,7 @@
             border-left:2px solid $topbar-menu-border;
             font-weight:$font-weight-bold;
             &:last-child {
-                border-right:2px solid #1C58B1;
+                border-right:2px solid $topbar-menu-border;
             }
         }
     }
