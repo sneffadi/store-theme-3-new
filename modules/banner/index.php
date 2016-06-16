@@ -324,7 +324,7 @@ function render_custom_product_banner() {
                             if($thisRating==='') $thisRating= 0;
                         }
                         $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -351,7 +351,7 @@ function render_custom_product_banner() {
                                 if($thisRating==='') $thisRating= 0;
                             }
                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -370,7 +370,7 @@ function render_custom_product_banner() {
                         <div class="rating-type">
                             <?php $value= get_post_meta($id, "ratings-effectiveness", true);
                             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                Enlargement Power:
+                                Weight Loss Power:
                         </div>
                             <?php $thisRating= get_post_meta($postId, 'ratings-effectiveness', TRUE);
                             if($thisRating==='') {
@@ -378,7 +378,7 @@ function render_custom_product_banner() {
                                 if($thisRating==='') $thisRating= 0;
                             }
                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -407,7 +407,7 @@ function render_custom_product_banner() {
                             if($thisRating==='') $thisRating= 0;
                         }
                         $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -434,7 +434,7 @@ function render_custom_product_banner() {
                                 if($thisRating==='') $thisRating= 0;
                             }
                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -461,7 +461,7 @@ function render_custom_product_banner() {
                                 if($thisRating==='') $thisRating= 0;
                             }
                             $thisRating= number_format(floatval($thisRating), 1); ?>
-                        <div class="star-col">
+                        <div class="star-col" data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="<?php echo $thisRating."/".$num; ?>">
                             <div class="star-positioner">
                                 <div class="stars">
                                     <div class="colorbar" style="width:<?php echo $thisRating*20;?>%"></div>
@@ -504,10 +504,12 @@ function render_custom_product_banner() {
             document.getElementById('price').innerHTML = (value * new_qty).toFixed(2);
             return new_qty;
         }
-        $(".custom-product-banner .productMeta .prod-title .criterion-row").hover(
+        $(".custom-product-banner .productMeta .prod-title .criterion-row").mouseenter(
             function () {
                 $(".productMeta .ratings-box").show();
-            },
+            }
+        );
+        $(".custom-product-banner .productMeta .ratings-box").mouseleave(
             function () {
                 $(".productMeta .ratings-box").hide();
             }
