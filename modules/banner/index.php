@@ -100,6 +100,10 @@ function product_banner_callback($post) {
                 <label for="guar-tab">Guarantee Tab (include p tags)</label>
                 <textarea type="text" name="guar-tab"><?php if ( isset ( $cf_value['guar-tab'] ) ) echo $cf_value['guar-tab'][0]; ?></textarea>
             </p>
+            <p>
+                <label for="faq-tab">FAQ Tab (include p tags)</label>
+                <textarea type="text" name="faq-tab"><?php if ( isset ( $cf_value['faq-tab'] ) ) echo $cf_value['faq-tab'][0]; ?></textarea>
+            </p>
         </div>
     </div>
 </section><!--/banner_meta -->
@@ -169,6 +173,9 @@ function product_banner_save($post_id) {
     if((isset($_POST['guar-tab']))&&($_POST['guar-tab']!='')) {
         update_post_meta($post->ID, 'guar-tab', $_POST['guar-tab']);
     } else delete_post_meta($post->ID, 'guar-tab');
+    if((isset($_POST['faq-tab']))&&($_POST['faq-tab']!='')) {
+        update_post_meta($post->ID, 'faq-tab', $_POST['faq-tab']);
+    } else delete_post_meta($post->ID, 'faq-tab');
 
     $cf_value = get_post_meta($post_id);
     $i = 1;
@@ -541,18 +548,20 @@ function render_custom_product_banner() {
     $description= isset($cf_value['description-tab']) ? $cf_value['description-tab'][0] : 'Coming Soon1';
     $suppfacts= isset($cf_value['suppfacts-tab']) ? $cf_value['suppfacts-tab'][0] : 'Coming Soon2';
     $test= isset($cf_value['test-tab']) ? $cf_value['test-tab'][0] : 'Coming Soon3';
-    $faq= isset($cf_value['guar-tab']) ? $cf_value['guar-tab'][0] : 'Coming Soon4';
+    $guar= isset($cf_value['guar-tab']) ? $cf_value['guar-tab'][0] : 'Coming Soon4';
+    $faq= isset($cf_value['faq-tab']) ? $cf_value['faq-tab'][0] : 'Coming Soon5';
     if ($showCustom= (isset($cf_value['cf_custom_tabs']))&&($cf_value['cf_custom_tabs'][0]==='yes')) { ?>
         <div class="row tabs-section">
             <div class="small-24 column">
                 <div class="border-wrap">
                     <div class="row">
-                        <div class="small-20 small-centered columns">
+                        <div class="small-22 small-centered columns">
                             <ul class="tabs" data-tabs id="custom-tabs">
                               <?php if((isset($cf_value['description-tab']))&&($cf_value['description-tab']!='')) { ?><li class="tabs-title is-active"><a href="#description-panel">Description</a></li> <?php } ?>
                               <?php if((isset($cf_value['suppfacts-tab']))&&($cf_value['suppfacts-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#suppfacts-panel">Ingredients</a></li> <?php } ?>
                               <?php if((isset($cf_value['test-tab']))&&($cf_value['test-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='') {echo 'is-active';} ?>"><a href="#test-panel">Testimonials</a></li> <?php } ?>
                               <?php if((isset($cf_value['guar-tab']))&&($cf_value['guar-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?>"><a href="#guar-panel">Guarantee</a></li> <?php } ?>
+                              <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><li class="tabs-title <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='' && $cf_value['guar-tab']=='') {echo 'is-active';} ?>"><a href="#faq-panel">FAQ</a></li> <?php } ?>
                             </ul>
                         </div> <!-- / .small-24 columns -->                
                     </div> <!-- / .row --> 
@@ -580,6 +589,13 @@ function render_custom_product_banner() {
                         </div> <!-- / .row -->
                     </div> <?php } ?>
                     <?php if((isset($cf_value['guar-tab']))&&($cf_value['guar-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='') {echo 'is-active';} ?> tabs-panel" id="guar-panel">
+                        <div class="row small-collapse medium-uncollapse">
+                            <div class="small-24 columns">
+                                <?php echo do_shortcode($guar); ?> 
+                            </div> <!-- / .small-24 columns -->
+                        </div> <!-- / .row -->
+                    </div><?php } ?>
+                    <?php if((isset($cf_value['faq-tab']))&&($cf_value['faq-tab']!='')) { ?><div class="content <?php if($cf_value['suppfacts-tab']=='' && $cf_value['description-tab']=='' && $cf_value['test-tab']=='' && $cf_value['guar-tab']=='') {echo 'is-active';} ?> tabs-panel" id="faq-panel">
                         <div class="row small-collapse medium-uncollapse">
                             <div class="small-24 columns">
                                 <?php echo do_shortcode($faq); ?> 
