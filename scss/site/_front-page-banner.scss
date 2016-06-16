@@ -1,7 +1,8 @@
 #hero {
     h1 {
-        font-size: rem-calc(35);
+        font-size: rem-calc(48) ;
         padding-top:rem-calc(30);
+        line-height:1;
         span {
             color:$primary-color;
         }
@@ -80,5 +81,9 @@
         padding-top:rem-calc(16);
         padding-bottom:rem-calc(16);
         border-radius:rem-calc(10);
+        .guarantee-small {
+            width:rem-calc(130);
+            margin-right:rem-calc(15);
+        }
     }
 }
