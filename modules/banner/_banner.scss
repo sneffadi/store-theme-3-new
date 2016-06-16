@@ -20,6 +20,8 @@
         top:rem-calc(54);
         left:0;
         display:none;
+        border:1px solid #D4D4D4;
+        border-top:none;
         &:after {
             display:block;
             content:'';
@@ -253,5 +255,11 @@
                 float:right;
             }
         }
+    }
+}
+.reveal {
+    img {
+        display:block;
+        margin:0 auto;
     }
 }

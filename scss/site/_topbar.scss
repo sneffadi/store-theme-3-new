@@ -159,13 +159,18 @@
             }
         }
     }
+    ul {
+        ul {
+           background:$topbar-background; 
+        }
+    }
 
 }
 .top-bar-section {
     ul.desktop-menu {
         float:left;
         li {
-            border-left:2px solid #1C58B1;
+            border-left:2px solid $topbar-menu-border;
             font-weight:$font-weight-bold;
             &:last-child {
                 border-right:2px solid #1C58B1;
@@ -182,7 +187,7 @@
     height:auto;
     ul {
         li {
-            border-bottom:1px solid $white;
+            border-bottom:1px solid $topbar-menu-border;
             padding-bottom:rem-calc(8);
             &:after {
                 display:block;

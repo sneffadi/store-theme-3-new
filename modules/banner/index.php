@@ -250,9 +250,15 @@ function render_custom_product_banner() {
                     $slides .= '<div class="tabs-panel';
                     if ($j ==1) {$slides .= ' is-active';}
                     $slides .= '" id="panel'.$j.'">';
+                    $slides .= '<a data-open="imageModal'.$j.'">';
                     $slides .= '<img src="'.custom_get_uploadurl().$sfImg.'" class="img-large" />';
+                    $slides .= '</a>';
                     $slides .= '</div>';
-                    
+                    $slides .= '<div class="reveal" id="imageModal'.$j.'" data-reveal>';
+                    $slides .= '<img src="'.custom_get_uploadurl().$sfImg.'" />';
+                    $slides .= '<button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>';
+                    $slides .= '</div>';
+
                     $j++;
                 } 
             echo $slides;?>
