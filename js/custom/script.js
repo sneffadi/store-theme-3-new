@@ -92,7 +92,7 @@ $(document).ready(function() {
         "use strict";
         if (e("body").hasClass('out-of-stock')) {
             e(".custom-product-banner").find(".button").addClass('gray').text("Out of Stock");
-            jQuery('button').click(function(event) { 
+            jQuery('button.addToCart').click(function(event) { 
               event.preventDefault(); 
               alert('Out of Stock');
             });
