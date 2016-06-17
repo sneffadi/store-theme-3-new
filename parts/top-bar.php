@@ -49,7 +49,7 @@
 	                                        $thisRating= get_post_meta($id, 'ratings-overall-value', TRUE);
 	                                        if($thisRating==='') $thisRating= 0;
 	                                    }
-	                                    $thisRating= number_format(floatval($thisRating), 0);
+	                                    $thisRating= number_format(floatval($thisRating), 1);
         									if (has_post_thumbnail($id)) { echo get_the_post_thumbnail($id); }  
         									 
         									echo '<h4>'.get_the_title($id).'</h4>';
