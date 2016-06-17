@@ -68,7 +68,10 @@
 
 .title-bar {
   height:auto;
-  padding-bottom:rem-calc(25);
+    padding-bottom:rem-calc(25);
+    @media #{$small-only} {
+        padding:rem-calc(5) 0 rem-calc(13);
+    }
 
   .left-small {
     padding-top:rem-calc(8);
@@ -235,4 +238,10 @@
 }
 .dropdown.menu>li.opens-right>.is-dropdown-submenu {
     left:rem-calc(-2);
+}
+.top-bar-right {
+    float:none;
+    @media #{$large-up} {
+        float:right;
+    }
 }
