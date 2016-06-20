@@ -323,8 +323,7 @@ function render_custom_product_banner() {
                     </div><!--/ small-3 medium-2 columns out-of -->
                 </div><!--/ criterion-row row -->
             </div>
-        </div>
-        <div class="ratings-box">
+            <div class="ratings-box">
             <div class="small-24 columns table">
                 <div class="criterion-row row">
                     <div class="small-8 columns criterion">
@@ -383,7 +382,7 @@ function render_custom_product_banner() {
                         <div class="rating-type">
                             <?php $value= get_post_meta($id, "ratings-effectiveness", true);
                             if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                Weight Loss Power:
+                                Enlargement Power:
                         </div>
                             <?php $thisRating= get_post_meta($postId, 'ratings-effectiveness', TRUE);
                             if($thisRating==='') {
@@ -492,6 +491,8 @@ function render_custom_product_banner() {
                 </div><!--/ criterion-row row -->
             </div>
         </div>
+        </div>
+        
         <?php $bannerSubheader= isset($cf_value['cf_banner_subheader']) ? $cf_value['cf_banner_subheader'][0] : '';
         if(($bannerSubheader!==FALSE)&&($bannerSubheader!=='')):
             ?>
@@ -522,7 +523,7 @@ function render_custom_product_banner() {
                 $(".productMeta .ratings-box").show();
             }
         );
-        $(".custom-product-banner .productMeta .ratings-box").mouseleave(
+        $(".custom-product-banner .productMeta .prod-title").mouseleave(
             function () {
                 $(".productMeta .ratings-box").hide();
             }
