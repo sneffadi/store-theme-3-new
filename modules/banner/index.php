@@ -232,6 +232,7 @@ function render_custom_product_banner() {
     $postId= get_the_ID();
     $options = get_option('theme_options');
     $num = !empty($options['ratings']) ? $options['ratings'] : "100";
+    $power = !empty($options['nichepower']) ? $options['nichepower'] : "";
     $cf_value= get_post_meta($postId);
     $themeOptions= get_option('theme_options');
     $priceOne = get_post_meta($postId, "cf_store_price", true);
@@ -381,8 +382,9 @@ function render_custom_product_banner() {
                     <div class="small-8 columns criterion">
                         <div class="rating-type">
                             <?php $value= get_post_meta($id, "ratings-effectiveness", true);
-                            if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                Enlargement Power:
+                            if(($value===FALSE)||($value==='')) $value= 0; 
+                                echo $power." Power:";
+                            ?>
                         </div>
                             <?php $thisRating= get_post_meta($postId, 'ratings-effectiveness', TRUE);
                             if($thisRating==='') {

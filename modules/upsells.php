@@ -13,6 +13,7 @@ function top_products_cb() {
     $options = get_option('theme_options');
     $num = !empty($options['ratings']) ? $options['ratings'] : "100";
     $niche = !empty($options['nichename']) ? $options['nichename'] : "";
+    $power = !empty($options['nichepower']) ? $options['nichepower'] : "";
     $niche_override = get_post_meta($post->ID, "override_niche_name_override-niche-name", true);
     if ( $niche_override !== '' && $niche_override !== false ){
             $niche = $niche_override;
@@ -110,8 +111,9 @@ function top_products_cb() {
                                         <div class="small-8 columns criterion">
                                             <div class="rating-type">
                                                 <?php $value= get_post_meta($id, "ratings-effectiveness", true);
-                                                if(($value===FALSE)||($value==='')) $value= 0; ?>
-                                                    Enlargement Power:
+                                                if(($value===FALSE)||($value==='')) $value= 0; 
+                                                    echo $power . " Power:";
+                                                ?>
                                             </div>
                                                 <?php $thisRating= get_post_meta($post->ID, $id.'-ratings-effectiveness', TRUE);
                                                 if($thisRating==='') {

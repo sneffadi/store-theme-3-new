@@ -138,6 +138,13 @@ class MySettingsPage
             'theme-setting-admin', 
             'niche'
         );
+        add_settings_field(
+            'nichepower', 
+            'Niche Power', 
+            array( $this, 'nichepower_callback' ), 
+            'theme-setting-admin', 
+            'niche'
+        );
          add_settings_section(
             'ratings', // ID
             'Ratings', // Title
@@ -212,6 +219,9 @@ class MySettingsPage
         if( isset( $input['nichename'] ) )
             $new_input['nichename'] = sanitize_text_field( $input['nichename'] );
 
+        if( isset( $input['nichepower'] ) )
+            $new_input['nichepower'] = sanitize_text_field( $input['nichepower'] );
+
         if( isset( $input['ratings'] ) )
             $new_input['ratings'] = sanitize_text_field( $input['ratings'] );
         
@@ -281,6 +291,13 @@ class MySettingsPage
         printf(
             '<input type="text" id="nichename" name="theme_options[nichename]" value="%s" />',
             isset( $this->options['nichename'] ) ? esc_attr( $this->options['nichename']) : ''
+        );
+    }
+    public function nichepower_callback()
+    {
+        printf(
+            '<input type="text" id="nichepower" name="theme_options[nichepower]" value="%s" />',
+            isset( $this->options['nichepower'] ) ? esc_attr( $this->options['nichepower']) : ''
         );
     }
     public function ratings_callback()
